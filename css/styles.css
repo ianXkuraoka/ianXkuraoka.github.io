@@ -193,6 +193,8 @@ h2 {
     flex: 1;
     cursor: pointer;
     min-width: 60px;
+    outline: none;
+    box-shadow: none;
 }
 
 .scale-radio {
