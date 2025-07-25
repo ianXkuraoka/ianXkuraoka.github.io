@@ -198,7 +198,7 @@ function updateNavigationButtons() {
     const nextBtn = document.getElementById('nextBtn');
 
     prevBtn.style.display = currentQuestionSet > 0 ? 'block' : 'none';
-    nextBtn.textContent = currentQuestionSet === questions.length - 1 ? 'FINALIZAR →' : 'CONTINUAR →';
+    nextBtn.textContent = currentQuestionSet === questions.length - 1 ? 'FINALIZAR' : 'CONTINUAR';
 }
 
 function submitResults() {

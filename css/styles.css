@@ -119,7 +119,7 @@ h2 {
     background: #FD7C50;
     color: #fff;
     border-radius: 8px;
-    border: 1px solid #FD7C50;
+    border: 8px solid #FD7C50;
     font-weight: 700;
     box-shadow: none;
     transition: background 0.2s, color 0.2s;
