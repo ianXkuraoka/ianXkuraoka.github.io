@@ -180,10 +180,12 @@ function nextQuestionScreen() {
     if (currentQuestionSet < totalPages - 1) {
         currentQuestionSet++;
         renderQuestions();
+        window.scrollTo(0, 0);
     } else {
         document.getElementById('questionnaire').classList.remove('active');
         document.getElementById('email').classList.add('active');
         currentScreen = 3;
+        window.scrollTo(0, 0);
     }
 }
 
