@@ -1,0 +1,674 @@
+[
+  {
+    "Item": "1",
+    "competência": "autocontrole",
+    "Pergunta": "Eu consigo manter minhas emoções e impulsos sob controle em momentos de tensão.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "2",
+    "competência": "trabalho em equipe e colaboração",
+    "Pergunta": "Eu ajudo a resolver conflitos de forma construtiva dentro da equipe.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "3",
+    "competência": "adaptabilidade",
+    "Pergunta": "Eu consigo ajustar rapidamente minhas prioridades em resposta a mudanças inesperadas.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "4",
+    "competência": "sensibilidade aos impactos das decisões",
+    "Pergunta": "Eu percebo quando uma decisão organizacional afeta positivamente ou negativamente os colegas ou a equipe.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "5",
+    "competência": "transparência e coerência com s valores",
+    "Pergunta": "Eu mantenho meus valores mesmo quando estou sob pressão para agir de forma diferente.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "6",
+    "competência": "leitura de clima organizacional",
+    "Pergunta": "Eu identifico quando o moral da equipe está elevado ou quando há sinais de desmotivação e tensão.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "7",
+    "competência": "flexibilidade",
+    "Pergunta": "Eu ajusto minhas abordagens ao trabalhar em equipe ou em projetos colaborativos.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "8",
+    "competência": "gestão de relacionamentos (networking)",
+    "Pergunta": "Eu mantenho contato regular com minha rede, fortalecendo vínculos e trocas significativas.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "9",
+    "competência": "compaixão",
+    "Pergunta": "Eu demonstro interesse verdadeiro pelas pessoas ao meu redor, prestando atenção às suas necessidades emocionais.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "10",
+    "competência": "percepção da cultura organizacional",
+    "Pergunta": "Eu percebo como os valores e normas influenciam as decisões e interações no ambiente organizacional.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "11",
+    "competência": "sensibilidade às diferenças culturais",
+    "Pergunta": "Eu respeito e aceito valores ou crenças diferentes das minhas.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "12",
+    "competência": "gestão de conflitos",
+    "Pergunta": "Eu ajudo a mediar situações de conflito e a garantir que todas as partes sejam ouvidas.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "13",
+    "competência": "automotivação",
+    "Pergunta": "Eu mantenho determinação mesmo diante de fracassos.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "14",
+    "competência": "consciência corporal",
+    "Pergunta": "Eu percebo como minhas emoções afetam meu corpo fisicamente.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "15",
+    "competência": "leitura de clima organizacional",
+    "Pergunta": "Eu compreendo como o clima emocional influencia o desempenho, a colaboração e o bem-estar no ambiente de trabalho.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "16",
+    "competência": "autoavaliação precisa",
+    "Pergunta": "Eu conheço meus limites e capacidades de forma equilibrada, sem supervalorizá-los ou subestimá-los.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "17",
+    "competência": "influência nas relações interpessoais",
+    "Pergunta": "Eu ajusto minhas ações para melhorar a dinâmica entre as pessoas e promover um ambiente de trabalho mais colaborativo.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "18",
+    "competência": "liderança inspiradora",
+    "Pergunta": "Eu engajo as pessoas a trabalharem de forma colaborativa e eficiente para alcançar metas.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "19",
+    "competência": "gestão do estresse",
+    "Pergunta": "Eu consigo manter a qualidade do meu trabalho sob prazos apertados.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "20",
+    "competência": "reflexão",
+    "Pergunta": "Eu ajusto meu comportamento com base no feedback recebido.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "21",
+    "competência": "compreensão emocional",
+    "Pergunta": "Eu sou capaz de reconhecer que, em uma mesma situação, outra pessoa pode se expressar emocionalmente diferente de mim.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "22",
+    "competência": "negociação",
+    "Pergunta": "Eu utilizo comunicação clara e empática durante negociações.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "23",
+    "competência": "autoconsciência emocional",
+    "Pergunta": "Eu percebo minhas emoções em momentos de euforia, conflito ou pressão.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "24",
+    "competência": "comunicação assertiva",
+    "Pergunta": "Eu expresso minhas ideias de maneira clara e compreensível.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "25",
+    "competência": "influência nas relações interpessoais",
+    "Pergunta": "Eu identifico como minhas próprias relações interpessoais afetam o ambiente organizacional e ajo para melhorar a comunicação e colaboração.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "26",
+    "competência": "autocontrole",
+    "Pergunta": "Eu tomo decisões racionais mesmo sob pressão extrema.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "27",
+    "competência": "escuta ativa",
+    "Pergunta": "Eu demonstro empatia ao responder às necessidades e preocupações dos outros.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "28",
+    "competência": "autoavaliação precisa",
+    "Pergunta": "Eu tenho clareza sobre como minhas competências se comparam às de outras pessoas em minha área de atuação.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "29",
+    "competência": "liderança inspiradora",
+    "Pergunta": "Eu crio um ambiente que motiva os membros da equipe a se comprometerem com os objetivos.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "30",
+    "competência": "resiliência",
+    "Pergunta": "Eu mantenho meu desempenho mesmo sob estresse ou pressão prolongada.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "31",
+    "competência": "observação e leitura social",
+    "Pergunta": "Eu percebo quando as pessoas estão desconfortáveis ou insatisfeitas, mesmo que não expressem diretamente.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "32",
+    "competência": "observação e leitura social",
+    "Pergunta": "Eu identifico as necessidades não verbalizadas de meus colegas de trabalho.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "33",
+    "competência": "trabalho em equipe e colaboração",
+    "Pergunta": "Eu valorizo as ideias e perspectivas dos outros, integrando-as nas decisões coletivas.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "34",
+    "competência": "autoconfiança e autoestima",
+    "Pergunta": "Eu reconheço meu valor independentemente de validação externa.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "35",
+    "competência": "autodisciplina",
+    "Pergunta": "Eu sigo planos e rotinas com consistência para alcançar minhas metas.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "36",
+    "competência": "observação e leitura social",
+    "Pergunta": "Eu noto os sinais não verbais das pessoas ao meu redor (como linguagem corporal e expressões faciais) para entender suas emoções.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "37",
+    "competência": "percepção da cultura organizacional",
+    "Pergunta": "Eu identifico o que a cultura organizacional da minha empresa espera dos colaboradores em relação ao comportamento.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "38",
+    "competência": "compreensão emocional",
+    "Pergunta": "Eu consigo perceber como os outros estão se sentindo, mesmo quando não se comunicam verbalmente.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "39",
+    "competência": "autoconsciência emocional",
+    "Pergunta": "Eu identifico e compreendo minhas emoções e o impacto delas em minhas ações.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "40",
+    "competência": "sensibilidade às diferenças culturais",
+    "Pergunta": "Eu considero o contexto cultural ao interpretar as ações de alguém.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "41",
+    "competência": "transparência e coerência com s valores",
+    "Pergunta": "Eu mantenho coerência entre o que digo e o que faço, garantindo minha integridade.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "42",
+    "competência": "liderança inspiradora",
+    "Pergunta": "Eu lidero pelo exemplo, demonstrando os comportamentos e valores que espero dos outros.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "43",
+    "competência": "escuta ativa",
+    "Pergunta": "Eu ouço atentamente as preocupações dos outros antes de responder.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "44",
+    "competência": "automotivação",
+    "Pergunta": "Eu busco alcançar meus objetivos, mesmo sem cobrança externa.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "45",
+    "competência": "gestão de relacionamentos (networking)",
+    "Pergunta": "Eu dedico tempo para estabelecer novas conexões profissionais que possam ser benéficas a longo prazo.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "46",
+    "competência": "consciência corporal",
+    "Pergunta": "Eu uso minha consciência corporal para regular minhas emoções.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "47",
+    "competência": "sensibilidade às diferenças culturais",
+    "Pergunta": "Eu busco aprender sobre outras culturas para me comunicar de maneira mais eficaz.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "48",
+    "competência": "leitura de clima organizacional",
+    "Pergunta": "Eu percebo com facilidade o clima emocional predominante na minha equipe e na organização.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "49",
+    "competência": "flexibilidade",
+    "Pergunta": "Eu sou capaz de mudar de opinião quando surgem argumentos mais consistentes.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "50",
+    "competência": "sensibilidade aos impactos das decisões",
+    "Pergunta": "Eu estou atento ao impacto das decisões estratégicas sobre diferentes grupos dentro da organização.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "51",
+    "competência": "gestão de conflitos",
+    "Pergunta": "Eu facilito a comunicação para resolver desacordos de forma eficaz.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "52",
+    "competência": "gestão do estresse",
+    "Pergunta": "Eu percebo os sinais do meu corpo e mente que indicam aumento do estresse.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "53",
+    "competência": "autocontrole",
+    "Pergunta": "Eu mantenho a calma e o foco em situações estressantes.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "54",
+    "competência": "trabalho em equipe e colaboração",
+    "Pergunta": "Eu contribuo ativamente para o sucesso da equipe utilizando minhas habilidades de forma colaborativa.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "55",
+    "competência": "autoconfiança e autoestima",
+    "Pergunta": "Eu me sinto seguro em minhas decisões, mesmo diante de incertezas.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "56",
+    "competência": "adaptabilidade",
+    "Pergunta": "Eu me adapto a mudanças rápidas no ambiente de trabalho.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "57",
+    "competência": "compaixão",
+    "Pergunta": "Eu ofereço ajuda espontaneamente quando percebo que alguém está em dificuldades, mesmo que a pessoa não peça.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "58",
+    "competência": "adaptabilidade",
+    "Pergunta": "Eu ajusto meu estilo de comunicação conforme a situação exige.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "59",
+    "competência": "sensibilidade aos impactos das decisões",
+    "Pergunta": "Quando tomo decisões, eu considero o impacto delas sobre os diferentes interesses e necessidades das pessoas envolvidas.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "60",
+    "competência": "gestão de conflitos",
+    "Pergunta": "Eu entendo as perspectivas de todos antes de tomar decisões em um conflito.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "61",
+    "competência": "reflexão",
+    "Pergunta": "Eu reflito sobre minhas ações para identificar áreas de melhoria.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "62",
+    "competência": "autoconsciência emocional",
+    "Pergunta": "Eu consigo nomear claramente o que estou sentindo em diferentes situações.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "63",
+    "competência": "comunicação assertiva",
+    "Pergunta": "Eu adapto minha comunicação conforme as necessidades dos diferentes interlocutores.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "64",
+    "competência": "resiliência",
+    "Pergunta": "Eu mantenho uma atitude positiva diante de fracassos ou dificuldades.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "65",
+    "competência": "compreensão emocional",
+    "Pergunta": "Eu ajusto minha abordagem com base nas emoções identificadas nas pessoas ao meu redor.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "66",
+    "competência": "autodisciplina",
+    "Pergunta": "Eu persisto em meus objetivos até serem alcançados, mesmo diante de dificuldades.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "67",
+    "competência": "resiliência",
+    "Pergunta": "Eu aprendo com experiências difíceis para melhorar e crescer.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "68",
+    "competência": "comunicação assertiva",
+    "Pergunta": "Eu verifico se minha mensagem foi compreendida corretamente pelos outros.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "69",
+    "competência": "autoavaliação precisa",
+    "Pergunta": "Eu me coloco adequadamente nos desafios, identificando oportunidades e evitando a autossabotagem.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "70",
+    "competência": "autodisciplina",
+    "Pergunta": "Eu me mantenho focado mesmo diante de distrações.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "71",
+    "competência": "autoconfiança e autoestima",
+    "Pergunta": "Eu confio em minhas habilidades para enfrentar desafios de maneira segura.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "72",
+    "competência": "sensibilidade às diferenças culturais",
+    "Pergunta": "Eu ajusto minha forma de comunicação ao interagir com pessoas de diferentes origens culturais.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "73",
+    "competência": "gestão do estresse",
+    "Pergunta": "Eu busco apoio ou utilizo técnicas para gerenciar o estresse e manter o foco.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "74",
+    "competência": "percepção da cultura organizacional",
+    "Pergunta": "Eu estou ciente dos valores e normas que moldam o ambiente de trabalho na minha organização.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "75",
+    "competência": "transparência e coerência com s valores",
+    "Pergunta": "Eu ajo com honestidade em minhas interações profissionais.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "76",
+    "competência": "consciência corporal",
+    "Pergunta": "Eu noto mudanças físicas, como tensão muscular, quando estou sob estresse emocional.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "77",
+    "competência": "gestão de relacionamentos (networking)",
+    "Pergunta": "Eu me esforço para construir relações fortes e de apoio mútuo com colegas e parceiros.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "78",
+    "competência": "liderança inspiradora",
+    "Pergunta": "Eu comunico uma visão clara que inspira os outros a darem o melhor de si.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "79",
+    "competência": "flexibilidade",
+    "Pergunta": "Eu considero novas ideias para resolver problemas, mesmo que desafiem o status quo.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "80",
+    "competência": "influência nas relações interpessoais",
+    "Pergunta": "Eu percebo como as relações entre os colegas influenciam as interações no trabalho.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "81",
+    "competência": "compaixão",
+    "Pergunta": "Eu procuro entender o sofrimento dos outros e me esforço para aliviar esse sofrimento de forma respeitosa e solidária.",
+    "Resposta": "1",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "82",
+    "competência": "negociação",
+    "Pergunta": "Eu busco soluções que atendem as necessidades de todas as partes.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "83",
+    "competência": "reflexão",
+    "Pergunta": "Eu aprendo com os erros para evitá-los no futuro.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "84",
+    "competência": "escuta ativa",
+    "Pergunta": "Eu faço perguntas para garantir que entendi corretamente o que foi dito.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "85",
+    "competência": "negociação",
+    "Pergunta": "Eu mantenho uma postura ética e respeitosa em todas as negociações.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "86",
+    "competência": "gestão de relacionamentos (networking)",
+    "Pergunta": "Eu apoio os outros quando necessário, promovendo confiança e colaboração.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "87",
+    "competência": "gestão de conflitos",
+    "Pergunta": "Eu abordo os conflitos com a intenção de encontrar soluções justas.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "88",
+    "competência": "automotivação",
+    "Pergunta": "Eu me sinto motivado a buscar novas metas continuamente.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "89",
+    "competência": "trabalho em equipe e colaboração",
+    "Pergunta": "Eu respeito as contribuições dos outros membros da equipe.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "90",
+    "competência": "consciência corporal",
+    "Pergunta": "Eu percebo quando preciso pausar ou descansar com base nos sinais do meu corpo.",
+    "Resposta": "3",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "91",
+    "competência": "escuta ativa",
+    "Pergunta": "Eu mantenho uma escuta ativa mesmo em situações de discordância ou pressão.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "92",
+    "competência": "liderança inspiradora",
+    "Pergunta": "Eu escuto e reconheço as contribuições das pessoas como parte do processo de inspiração e liderança.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "93",
+    "competência": "negociação",
+    "Pergunta": "Eu busco construir acordos criativos que gerem valor mútuo e fortaleçam os relacionamentos.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "94",
+    "competência": "trabalho em equipe e colaboração",
+    "Pergunta": "Eu demonstro confiança nos colegas e reconheço a interdependência como chave para o sucesso coletivo.",
+    "Resposta": "5",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "95",
+    "competência": "comunicação assertiva",
+    "Pergunta": "Eu expresso sentimentos difíceis com respeito, preservando relações saudáveis mesmo em situações desafiadoras.",
+    "Resposta": "4",
+    "Verifica": "OK"
+  },
+  {
+    "Item": "96",
+    "competência": "gestão de relacionamentos (networking)",
+    "Pergunta": "Eu utilizo minha rede para criar pontes entre pessoas e áreas, fortalecendo alianças estratégicas.",
+    "Resposta": "2",
+    "Verifica": "OK"
+  }
+]

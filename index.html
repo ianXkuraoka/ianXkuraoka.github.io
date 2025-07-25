@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Inteligência Emocional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela de Login -->
+        <!--<div id="Login">
+            <h1>placeholder Login</h1>
+        </div>-->
+        
+        <!-- Tela de Boas-vindas 
+        <div class="screen active" id="welcome">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text">TESTE DE<br>INTELIGÊNCIA EMOCIONAL</div>
+            </div>
+            <h1>VOCÊ CONTROLA SUAS EMOÇÕES OU É CONTROLADO POR ELAS?</h1>
+            <p class="subtitle">
+                Responder esse teste pode mudar a forma como você se vê!
+            </p>
+            <div class="description">
+                <h2>Este modelo é baseado nos 5 pilares da Inteligência Emocional segundo a metodologia de Goleman, sendo eles:</h2>
+                <ul class="pillars-list">
+                  <li><strong>AUTOCONSCIÊNCIA</strong></li>
+                  <li><strong>AUTOGESTÃO</strong></li>
+                  <li><strong>MOTIVAÇÃO</strong></li>
+                  <li><strong>CONSCIÊNCIA SOCIAL</strong></li>
+                  <li><strong>GESTÃO DE RELACIONAMENTOS</strong></li>
+                </ul>
+            </div>
+            <button class="btn" onclick="nextScreen()">INICIAR →</button>
+        </div>
+        -->
+
+        <!-- Tela de Boas-vindas - Parte 1 -->
+        <div class="screen active" id="welcome1">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text-group">
+                    <div class="logo-text">DIRECIONAR.ME</div>
+                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
+                </div>
+            </div>
+            <h1>VOCÊ CONTROLA SUAS EMOÇÕES OU É CONTROLADO POR ELAS?</h1>
+            <p class="subtitle">
+                Responder esse teste pode mudar a forma como você se vê!
+            </p>
+            <button class="btn" onclick="showWelcome2()">CONTINUAR →</button>
+        </div>
+
+        <!-- Tela de Boas-vindas - Parte 2 -->
+        <div class="screen" id="welcome2">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text-group">
+                    <div class="logo-text">DIRECIONAR.ME</div>
+                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
+                </div>
+            </div>
+            <div class="description">
+                <h2>Este modelo é baseado nos 5 pilares da Inteligência Emocional segundo a metodologia de Goleman, sendo eles:</h2>
+                <ul class="pillars-list">
+                <li><strong>AUTOCONSCIÊNCIA</strong></li>
+                <li><strong>AUTOGESTÃO</strong></li>
+                <li><strong>MOTIVAÇÃO</strong></li>
+                <li><strong>CONSCIÊNCIA SOCIAL</strong></li>
+                <li><strong>GESTÃO DE RELACIONAMENTOS</strong></li>
+                </ul>
+            </div>
+            <button class="btn" onclick="nextScreen()">INICIAR →</button>
+        </div>
+
+        <!-- Tela de Instruções -->
+        <div class="screen" id="instructions">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text-group">
+                    <div class="logo-text">DIRECIONAR.ME</div>
+                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
+                </div>
+            </div>
+            <div class="instructions-panel">
+                <h3>INSTRUÇÕES</h3>
+                <ul class="instructions-list">
+                    <li>Escolha um local tranquilo onde não haja interrupções</li>
+                    <li>Reserve aproximadamente 30 minutos para responder</li>
+                </ul>
+                <br>
+                <p>As perguntas são baseadas em uma escala Likert, com 5 opções de resposta:</p>
+                <div class="likert-scale" style="margin-top: 20px;">
+                    <div class="scale-option">
+                        <div class="scale-radio"></div>
+                        <div class="scale-label">discordo<br>totalmente</div>
+                    </div>
+                    <div class="scale-option">
+                        <div class="scale-radio"></div>
+                        <div class="scale-label">discordo<br>parcialmente</div>
+                    </div>
+                    <div class="scale-option">
+                        <div class="scale-radio"></div>
+                        <div class="scale-label">neutro</div>
+                    </div>
+                    <div class="scale-option">
+                        <div class="scale-radio"></div>
+                        <div class="scale-label">concordo<br>parcialmente</div>
+                    </div>
+                    <div class="scale-option">
+                        <div class="scale-radio"></div>
+                        <div class="scale-label">concordo<br>totalmente</div>
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="nextScreen()">INICIAR →</button>
+        </div>
+
+        <!-- Telas do Questionário -->
+        <div class="screen" id="questionnaire">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text-group">
+                    <div class="logo-text">DIRECIONAR.ME</div>
+                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
+                </div>
+            </div>
+            <div class="progress-text">
+                <span id="currentStep">1</span> de 12 etapas
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <h2>ESCOLHA A OPÇÃO QUE MELHOR TE REPRESENTA</h2>
+            <div id="questionsContainer"></div>
+            <div class="nav-buttons">
+                <button class="btn-secondary" onclick="previousScreen()" id="prevBtn" style="display: none;">← ANTERIOR</button>
+                <button class="btn" onclick="nextQuestionScreen()" id="nextBtn">CONTINUAR →</button>
+            </div>
+        </div>
+
+        <!-- Tela de Email -->
+        <div class="screen" id="email">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text-group">
+                    <div class="logo-text">DIRECIONAR.ME</div>
+                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
+                </div>
+            </div>
+            <div class="thank-you-icon">📋</div>
+            <h2>OBRIGADO POR RESPONDER!</h2>
+            <p class="subtitle">Preencha com seu email para receber os resultados</p>
+            <input type="email" class="email-input" placeholder="seunome@gmail.com" id="emailInput">
+            <div class="error-message" id="emailError">Por favor, insira um email válido</div>
+            <button class="btn" onclick="submitResults()">RECEBER RESULTADOS →</button>
+        </div>
+
+        <!-- Tela de Agradecimento -->
+        <div class="screen" id="thanks">
+            <div class="logo">
+                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+                <div class="logo-text-group">
+                    <div class="logo-text">DIRECIONAR.ME</div>
+                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
+                </div>
+            </div>
+            <div class="thank-you-icon">🎉</div>
+            <h2>OBRIGADO!</h2>
+            <p class="subtitle">Seus resultados foram enviados com sucesso!</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
