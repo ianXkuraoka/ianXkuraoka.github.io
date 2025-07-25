@@ -182,6 +182,8 @@ h2 {
     margin-bottom: 30px;
     flex-wrap: wrap;
     flex-direction: row;
+    margin-top: 10px;
+    text-align: center;
 }
 
 .scale-option {
@@ -220,7 +222,7 @@ h2 {
 }
 
 .scale-label {
-    font-size: 15px;
+    font-size: 13px;
     color: #555;
 }
 
@@ -332,7 +334,7 @@ h2 {
     box-shadow: 0 2px 8px rgba(253,124,80,0.18);
 }
 
-@media (max-width: 499px) {
+@media (max-width: 530px) {
     .screen {
         padding: 20px;
     }
