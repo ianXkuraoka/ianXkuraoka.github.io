@@ -176,7 +176,8 @@ function nextQuestionScreen() {
         }
     }
 
-    if (currentQuestionSet < questions.length - 1) {
+    const totalPages = Math.ceil(questions.length / 8);
+    if (currentQuestionSet < totalPages - 1) {
         currentQuestionSet++;
         renderQuestions();
     } else {
@@ -187,8 +188,8 @@ function nextQuestionScreen() {
 }
 
 function updateProgress() {
-    const totalSets = questions.length;
-    const progress = ((currentQuestionSet + 1) / totalSets) * 100;
+    const totalPages = Math.ceil(questions.length / 8);
+    const progress = ((currentQuestionSet + 1) / totalPages) * 100;
     document.getElementById('progressFill').style.width = progress + '%';
     document.getElementById('currentStep').textContent = currentQuestionSet + 1;
 }
@@ -196,9 +197,10 @@ function updateProgress() {
 function updateNavigationButtons() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const totalPages = Math.ceil(questions.length / 8);
 
     prevBtn.style.display = currentQuestionSet > 0 ? 'block' : 'none';
-    nextBtn.textContent = currentQuestionSet === questions.length - 1 ? 'FINALIZAR' : 'CONTINUAR';
+    nextBtn.textContent = currentQuestionSet === totalPages - 1 ? 'FINALIZAR' : 'CONTINUAR';
 }
 
 function submitResults() {
