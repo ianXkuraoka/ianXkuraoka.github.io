@@ -2,6 +2,7 @@ let currentScreen = 0;
 let currentQuestionSet = 0;
 let answers = {};
 let questions = [];
+let pillars = {};
 
 // Mapping from competência to pilar
 const competenciaToPilar = {
@@ -42,7 +43,7 @@ async function fetchQuestions() {
     const questionsData = await response.json();
 
     // Group questions by pillar
-    const pillars = {
+    pillars = {
         AUTOCONSCIÊNCIA: [],
         AUTOGESTÃO: [],
         MOTIVAÇÃO: [],
@@ -215,15 +216,145 @@ function submitResults() {
     }
 
     emailError.style.display = 'none';
-    const metrics = calculateMetrics();
-
-    console.log('Resultados:', answers);
-    console.log('Email:', email);
-    console.log('Métricas:', metrics);
+    const metrics = calculateMetrics(answers, pillars);
 
     document.getElementById('email').classList.remove('active');
     document.getElementById('thanks').classList.add('active');
     currentScreen = 4;
+
+    renderPillarChart(metrics);
+    renderGroupedSubPillarCharts();
+}
+
+// Draw a pie chart for the 5 pillars
+function renderPillarChart(metrics) {
+    const ctx = document.getElementById('resultsChart').getContext('2d');
+    if (window.pillarChartInstance) window.pillarChartInstance.destroy();
+
+    // Calculate max possible points per pillar (number of questions * 5)
+    const maxPoints = [
+        pillars.AUTOCONSCIÊNCIA.length * 5,
+        pillars.AUTOGESTÃO.length * 5,
+        pillars.MOTIVAÇÃO.length * 5,
+        pillars.CONSCIÊNCIA_SOCIAL.length * 5,
+        pillars.GESTÃO_DE_RELACIONAMENTOS.length * 5
+    ];
+    const scores = [
+        metrics.autoconsciencia,
+        metrics.autogestao,
+        metrics.motivacao,
+        metrics.conscienciaSocial,
+        metrics.gestaoRelacionamentos
+    ];
+    const percentages = scores.map((score, i) =>
+        maxPoints[i] ? Math.round((score / maxPoints[i]) * 100) : 0
+    );
+
+    window.pillarChartInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [
+                'Autoconsciência',
+                'Autogestão',
+                'Motivação',
+                'Consciência Social',
+                'Gestão de Relacionamentos'
+            ],
+            datasets: [{
+                label: 'Percentual',
+                data: percentages,
+                backgroundColor: [
+                    '#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'
+                ]
+            }]
+        },
+        options: {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.label}: ${context.parsed}%`;
+                        }
+                    }
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+}
+
+function renderGroupedSubPillarCharts() {
+    const container = document.getElementById('subPillarChartsContainer');
+    container.innerHTML = ''; // Clear previous charts
+
+    // Group questions by pillar and subpillar
+    const pillarGroups = {
+        AUTOCONSCIÊNCIA: [],
+        AUTOGESTÃO: [],
+        MOTIVAÇÃO: [],
+        CONSCIÊNCIA_SOCIAL: [],
+        GESTÃO_DE_RELACIONAMENTOS: []
+    };
+
+    questions.forEach(q => {
+        const competenciaKey = q.competência ? q.competência.trim().toLowerCase() : '';
+        const pilar = competenciaToPilar[competenciaKey];
+        if (pilar && pillarGroups[pilar]) {
+            pillarGroups[pilar].push(q);
+        }
+    });
+
+    Object.entries(pillarGroups).forEach(([pillar, qs], idx) => {
+        // Calculate subpillar scores for this pillar
+        const subScores = {};
+        qs.forEach(q => {
+            if (!q.competência) return;
+            if (!subScores[q.competência]) subScores[q.competência] = 0;
+            subScores[q.competência] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
+        });
+
+        // Title
+        const title = document.createElement('div');
+        title.style.textAlign = 'center';
+        title.style.fontWeight = 'bold';
+        title.style.marginBottom = '8px';
+        title.textContent = pillar.replace(/_/g, ' ');
+        container.appendChild(title);
+
+        // Create a canvas for this pillar
+        const canvas = document.createElement('canvas');
+        canvas.width = 320;
+        canvas.height = 220;
+        canvas.style.width = '100%';
+        canvas.style.maxWidth = '400px';
+        canvas.style.height = '220px';
+        container.appendChild(canvas);
+
+        // Draw chart
+        new Chart(canvas.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: Object.keys(subScores),
+                datasets: [{
+                    label: 'Pontuação',
+                    data: Object.values(subScores),
+                    backgroundColor: '#50BFFD'
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: { display: false }
+                },
+                indexAxis: 'y',
+                scales: {
+                    x: { beginAtZero: true }
+                }
+            }
+        });
+    });
 }
 
 function isValidEmail(email) {
@@ -249,6 +380,43 @@ function calculateMetrics(answers, pillars) {
 
     metrics.total = metrics.autoconsciencia + metrics.autogestao + metrics.motivacao + metrics.conscienciaSocial + metrics.gestaoRelacionamentos;
     return metrics;
+}
+
+function calculateSubPillarScores() {
+    // Group and sum answers by competência (sub-pillar)
+    const subPillarScores = {};
+    questions.forEach(q => {
+        if (!q.competência) return;
+        if (!subPillarScores[q.competência]) subPillarScores[q.competência] = 0;
+        // Use q.Item-1 as index for answers
+        subPillarScores[q.competência] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
+    });
+    return subPillarScores;
+}
+
+function renderSubPillarChart() {
+    const subPillarScores = calculateSubPillarScores();
+    const ctx = document.getElementById('subPillarChart').getContext('2d');
+    // Destroy previous chart instance if needed (optional, for repeated renders)
+    if (window.subPillarChartInstance) window.subPillarChartInstance.destroy();
+
+    window.subPillarChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(subPillarScores),
+            datasets: [{
+                label: 'Pontuação por Competência',
+                data: Object.values(subPillarScores),
+                backgroundColor: '#50BFFD'
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            scales: {
+                x: { beginAtZero: true }
+            }
+        }
+    });
 }
 
 function previousQuestionScreen() {
