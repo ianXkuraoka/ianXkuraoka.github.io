@@ -170,7 +170,7 @@ h2 {
 }
 
 .question-container {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .question {
@@ -188,10 +188,10 @@ h2 {
     display: flex;
     justify-content:space-between;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     flex-wrap: wrap;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: none;
     text-align: center;
 }
 
