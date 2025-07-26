@@ -12,7 +12,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url(../images/v904-nunny-019-d.jpg) no-repeat center center fixed;
+    background: linear-gradient(135deg, 
+    #FFB5A7 0%,     /* Soft peachy-pink top right */
+    #FFC9A3 15%,    /* Peachy transition */
+    #FFD6A5 30%,    /* Light peach */
+    #FFDFB8 45%,    /* Pale peach-yellow */
+    #F5E6A3 60%,    /* Soft yellow */
+    #E8F5A3 75%,    /* Yellow-green */
+    #D4E6A3 90%,    /* Pale green */
+    #C9DDA3 100%    /* Light green bottom left */
+);
     background-size: cover;
 }
 
