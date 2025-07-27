@@ -133,6 +133,7 @@ h2 {
     box-shadow: none;
     transition: background 0.2s, color 0.2s;
     cursor: pointer;
+    width: 100%;
 }
 
 .btn:disabled {
