@@ -156,12 +156,18 @@
             <div class="thank-you-icon">🎉</div>
             <h2>OBRIGADO!</h2>
             <p class="subtitle">Seus resultados foram enviados com sucesso!</p>
-            <canvas id="resultsChart" width="400" height="300"></canvas>
-            <div id="subPillarChartsContainer" style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px;"></div>
+            <!--<canvas id="resultsChart" width="400" height="300"></canvas>
+            <div id="subPillarChartsContainer" style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px;"></div>-->
         </div>
     </div>
 
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+      (function(){
+        emailjs.init("29KZmTnmmubf4xWWC"); // Replace with your EmailJS public key
+      })();
+    </script>
 </body>
 </html>

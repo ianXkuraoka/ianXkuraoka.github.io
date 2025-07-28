@@ -206,6 +206,117 @@ function updateNavigationButtons() {
     nextBtn.textContent = currentQuestionSet === totalPages - 1 ? 'FINALIZAR' : 'CONTINUAR';
 }
 
+function getPieChartImage(metrics) {
+    // Create a hidden canvas
+    const canvas = document.createElement('canvas');
+    canvas.width = 400;
+    canvas.height = 300;
+    const ctx = canvas.getContext('2d');
+
+    // Calculate max possible points per pillar (number of questions * 5)
+    const maxPoints = [
+        pillars.AUTOCONSCIÊNCIA.length * 5,
+        pillars.AUTOGESTÃO.length * 5,
+        pillars.MOTIVAÇÃO.length * 5,
+        pillars.CONSCIÊNCIA_SOCIAL.length * 5,
+        pillars.GESTÃO_DE_RELACIONAMENTOS.length * 5
+    ];
+    const scores = [
+        metrics.autoconsciencia,
+        metrics.autogestao,
+        metrics.motivacao,
+        metrics.conscienciaSocial,
+        metrics.gestaoRelacionamentos
+    ];
+    const percentages = scores.map((score, i) =>
+        maxPoints[i] ? Math.round((score / maxPoints[i]) * 100) : 0
+    );
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [
+                'Autoconsciência',
+                'Autogestão',
+                'Motivação',
+                'Consciência Social',
+                'Gestão de Relacionamentos'
+            ],
+            datasets: [{
+                label: 'Percentual',
+                data: percentages,
+                backgroundColor: [
+                    '#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'
+                ]
+            }]
+        },
+        options: {
+            animation: false,
+            plugins: {
+                legend: { display: true, position: 'bottom' }
+            }
+        }
+    });
+
+    return canvas.toDataURL('image/png');
+}
+
+function getSubPillarAnalysis() {
+    // Group questions by pillar and subpillar
+    const pillarGroups = {
+        AUTOCONSCIÊNCIA: [],
+        AUTOGESTÃO: [],
+        MOTIVAÇÃO: [],
+        CONSCIÊNCIA_SOCIAL: [],
+        GESTÃO_DE_RELACIONAMENTOS: []
+    };
+
+    questions.forEach(q => {
+        const competenciaKey = q.competência ? q.competência.trim().toLowerCase() : '';
+        const pilar = competenciaToPilar[competenciaKey];
+        if (pilar && pillarGroups[pilar]) {
+            pillarGroups[pilar].push(q);
+        }
+    });
+
+    const analysis = {};
+    Object.entries(pillarGroups).forEach(([pillar, qs]) => {
+        const subScores = {};
+        qs.forEach(q => {
+            if (!q.competência) return;
+            if (!subScores[q.competência]) subScores[q.competência] = 0;
+            subScores[q.competência] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
+        });
+        analysis[pillar] = subScores;
+    });
+    return analysis;
+}
+
+function getSummaryTable(metrics) {
+    return `
+        <table border="1" cellpadding="6" style="border-collapse:collapse;">
+            <tr><th>Pilar</th><th>Pontuação</th></tr>
+            <tr><td>Autoconsciência</td><td>${metrics.autoconsciencia}</td></tr>
+            <tr><td>Autogestão</td><td>${metrics.autogestao}</td></tr>
+            <tr><td>Motivação</td><td>${metrics.motivacao}</td></tr>
+            <tr><td>Consciência Social</td><td>${metrics.conscienciaSocial}</td></tr>
+            <tr><td>Gestão de Relacionamentos</td><td>${metrics.gestaoRelacionamentos}</td></tr>
+        </table>
+    `;
+}
+
+function getSubPillarHtml(subPillarAnalysis) {
+    let html = '';
+    for (const [pillar, subs] of Object.entries(subPillarAnalysis)) {
+        html += `<h4>${pillar.replace(/_/g, ' ')}</h4><ul>`;
+        for (const [sub, score] of Object.entries(subs)) {
+            html += `<li><b>${sub}:</b> ${score}</li>`;
+        }
+        html += '</ul>';
+    }
+    return html;
+}
+
 function submitResults() {
     const email = document.getElementById('emailInput').value;
     const emailError = document.getElementById('emailError');
@@ -217,13 +328,33 @@ function submitResults() {
 
     emailError.style.display = 'none';
     const metrics = calculateMetrics(answers, pillars);
+    const pieChartImage = getPieChartImage(metrics);
+    const summaryTable = getSummaryTable(metrics);
+    const subPillarAnalysis = getSubPillarAnalysis();
+    const subPillarHtml = getSubPillarHtml(subPillarAnalysis);
 
-    document.getElementById('email').classList.remove('active');
-    document.getElementById('thanks').classList.add('active');
-    currentScreen = 4;
-
-    renderPillarChart(metrics);
-    renderGroupedSubPillarCharts();
+    // 1. Send to user
+    emailjs.send('service_f61mg7v', 'template_wx406pr', {
+        to_email: email,
+        summary_table: summaryTable,
+        pie_chart: pieChartImage
+    }).then(function(response) {
+        // 2. Send to admin
+        emailjs.send('service_f61mg7v', 'template_hv83ral', {
+            to_email: 'direcionar.me@gmail.com', // Replace with your admin email
+            summary_table: summaryTable,
+            pie_chart: pieChartImage,
+            subpillar_html: subPillarHtml
+        }).then(function(response) {
+            document.getElementById('email').classList.remove('active');
+            document.getElementById('thanks').classList.add('active');
+            currentScreen = 4;
+        }, function(error) {
+            alert('Erro ao enviar resultados ao admin.');
+        });
+    }, function(error) {
+        alert('Erro ao enviar resultados ao usuário.');
+    });
 }
 
 // Draw a pie chart for the 5 pillars
