@@ -207,10 +207,10 @@ function updateNavigationButtons() {
 }
 
 function getPieChartImage(metrics) {
-    // Create a hidden canvas
+    // Create a smaller canvas to reduce file size
     const canvas = document.createElement('canvas');
-    canvas.width = 400;
-    canvas.height = 300;
+    canvas.width = 300; // Reduced from 400
+    canvas.height = 225; // Reduced from 300
     const ctx = canvas.getContext('2d');
 
     // Calculate max possible points per pillar (number of questions * 5)
@@ -258,7 +258,8 @@ function getPieChartImage(metrics) {
         }
     });
 
-    return canvas.toDataURL('image/png');
+    // Use JPEG format with compression to reduce size
+    return canvas.toDataURL('image/jpeg', 0.7);
 }
 
 function getSubPillarAnalysis() {
@@ -294,29 +295,68 @@ function getSubPillarAnalysis() {
 
 function getSummaryTable(metrics) {
     return `
-        <table border="1" cellpadding="6" style="border-collapse:collapse;">
-            <tr><th>Pilar</th><th>Pontuação</th></tr>
-            <tr><td>Autoconsciência</td><td>${metrics.autoconsciencia}</td></tr>
-            <tr><td>Autogestão</td><td>${metrics.autogestao}</td></tr>
-            <tr><td>Motivação</td><td>${metrics.motivacao}</td></tr>
-            <tr><td>Consciência Social</td><td>${metrics.conscienciaSocial}</td></tr>
-            <tr><td>Gestão de Relacionamentos</td><td>${metrics.gestaoRelacionamentos}</td></tr>
-        </table>
+        <div style="font-family: Arial, sans-serif; margin: 20px 0;">
+            <h3 style="color: #333; margin-bottom: 15px;">Resultados por Pilar</h3>
+            <table style="border-collapse: collapse; width: 100%; max-width: 500px;">
+                <thead>
+                    <tr style="background-color: #f8f9fa;">
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Pilar</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Pontuação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">Autoconsciência</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autoconsciencia}</td>
+                    </tr>
+                    <tr style="background-color: #f8f9fa;">
+                        <td style="border: 1px solid #ddd; padding: 12px;">Autogestão</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autogestao}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">Motivação</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.motivacao}</td>
+                    </tr>
+                    <tr style="background-color: #f8f9fa;">
+                        <td style="border: 1px solid #ddd; padding: 12px;">Consciência Social</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.conscienciaSocial}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 12px;">Gestão de Relacionamentos</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.gestaoRelacionamentos}</td>
+                    </tr>
+                    <tr style="background-color: #e9ecef; font-weight: bold;">
+                        <td style="border: 1px solid #ddd; padding: 12px;">TOTAL</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.total}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     `;
 }
 
 function getSubPillarHtml(subPillarAnalysis) {
-    let html = '';
+    let html = '<div style="font-family: Arial, sans-serif; margin: 20px 0;">';
+    html += '<h3 style="color: #333; margin-bottom: 15px;">Análise Detalhada por Competência</h3>';
+    
     for (const [pillar, subs] of Object.entries(subPillarAnalysis)) {
-        html += `<h4>${pillar.replace(/_/g, ' ')}</h4><ul>`;
+        html += `<div style="margin-bottom: 20px;">`;
+        html += `<h4 style="color: #555; margin-bottom: 10px; border-bottom: 2px solid #FD7C50; padding-bottom: 5px;">${pillar.replace(/_/g, ' ')}</h4>`;
+        html += `<ul style="list-style-type: none; padding: 0; margin: 0;">`;
+        
         for (const [sub, score] of Object.entries(subs)) {
-            html += `<li><b>${sub}:</b> ${score}</li>`;
+            html += `<li style="padding: 5px 0; border-bottom: 1px solid #eee;">
+                        <strong style="color: #333;">${sub}:</strong> 
+                        <span style="color: #666;">${score}</span>
+                     </li>`;
         }
-        html += '</ul>';
+        html += '</ul></div>';
     }
+    html += '</div>';
     return html;
 }
 
+// Updated submit function without image upload
 function submitResults() {
     const email = document.getElementById('emailInput').value;
     const emailError = document.getElementById('emailError');
@@ -328,8 +368,8 @@ function submitResults() {
 
     emailError.style.display = 'none';
     const metrics = calculateMetrics(answers, pillars);
-    const pieChartImage = getPieChartImage(metrics);
     const summaryTable = getSummaryTable(metrics);
+    const textChart = getTextBasedChart(metrics);
     const subPillarAnalysis = getSubPillarAnalysis();
     const subPillarHtml = getSubPillarHtml(subPillarAnalysis);
 
@@ -337,23 +377,28 @@ function submitResults() {
     emailjs.send('service_f61mg7v', 'template_wx406pr', {
         to_email: email,
         summary_table: summaryTable,
-        pie_chart: pieChartImage
+        pie_chart: textChart
     }).then(function(response) {
+        console.log('User email sent successfully:', response);
+        
         // 2. Send to admin
         emailjs.send('service_f61mg7v', 'template_hv83ral', {
-            to_email: 'direcionar.me@gmail.com', // Replace with your admin email
+            to_email: 'direcionar.me@gmail.com',
             summary_table: summaryTable,
-            pie_chart: pieChartImage,
+            pie_chart: textChart,
             subpillar_html: subPillarHtml
         }).then(function(response) {
+            console.log('Admin email sent successfully:', response);
             document.getElementById('email').classList.remove('active');
             document.getElementById('thanks').classList.add('active');
             currentScreen = 4;
         }, function(error) {
-            alert('Erro ao enviar resultados ao admin.');
+            console.error('Admin email error:', error);
+            alert('Erro ao enviar resultados ao admin: ' + JSON.stringify(error));
         });
     }, function(error) {
-        alert('Erro ao enviar resultados ao usuário.');
+        console.error('User email error:', error);
+        alert('Erro ao enviar resultados ao usuário: ' + JSON.stringify(error));
     });
 }
 
@@ -415,6 +460,64 @@ function renderPillarChart(metrics) {
             }
         }
     });
+}
+
+function getTextBasedChart(metrics) {
+    // Calculate max possible points per pillar
+    const maxPoints = [
+        pillars.AUTOCONSCIÊNCIA.length * 5,
+        pillars.AUTOGESTÃO.length * 5,
+        pillars.MOTIVAÇÃO.length * 5,
+        pillars.CONSCIÊNCIA_SOCIAL.length * 5,
+        pillars.GESTÃO_DE_RELACIONAMENTOS.length * 5
+    ];
+    
+    const scores = [
+        metrics.autoconsciencia,
+        metrics.autogestao,
+        metrics.motivacao,
+        metrics.conscienciaSocial,
+        metrics.gestaoRelacionamentos
+    ];
+    
+    const labels = [
+        'Autoconsciência',
+        'Autogestão', 
+        'Motivação',
+        'Consciência Social',
+        'Gestão de Relacionamentos'
+    ];
+    
+    const percentages = scores.map((score, i) =>
+        maxPoints[i] ? Math.round((score / maxPoints[i]) * 100) : 0
+    );
+
+    let chart = `
+<div style="font-family: Arial, sans-serif; margin: 20px 0;">
+    <h3 style="color: #333; margin-bottom: 15px;">Gráfico de Resultados (%)</h3>
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+`;
+
+    percentages.forEach((percentage, i) => {
+        const barWidth = Math.max(percentage, 5); // Minimum width for visibility
+        const color = ['#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'][i];
+        
+        chart += `
+        <div style="margin-bottom: 15px;">
+            <div style="font-weight: bold; margin-bottom: 5px; color: #333;">${labels[i]}: ${percentage}%</div>
+            <div style="background: #e9ecef; height: 25px; border-radius: 12px; overflow: hidden;">
+                <div style="background: ${color}; height: 100%; width: ${barWidth}%; border-radius: 12px; transition: width 0.3s ease;"></div>
+            </div>
+        </div>
+        `;
+    });
+
+    chart += `
+    </div>
+</div>
+    `;
+    
+    return chart;
 }
 
 function renderGroupedSubPillarCharts() {
