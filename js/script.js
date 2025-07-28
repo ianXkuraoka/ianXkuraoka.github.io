@@ -307,27 +307,27 @@ function getSummaryTable(metrics) {
                 <tbody>
                     <tr>
                         <td style="border: 1px solid #ddd; padding: 12px;">Autoconsciência</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autoconsciencia}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autoconsciencia}/65</td>
                     </tr>
                     <tr style="background-color: #f8f9fa;">
                         <td style="border: 1px solid #ddd; padding: 12px;">Autogestão</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autogestao}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autogestao}/75</td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #ddd; padding: 12px;">Motivação</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.motivacao}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.motivacao}/60</td>
                     </tr>
                     <tr style="background-color: #f8f9fa;">
                         <td style="border: 1px solid #ddd; padding: 12px;">Consciência Social</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.conscienciaSocial}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.conscienciaSocial}/110</td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #ddd; padding: 12px;">Gestão de Relacionamentos</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.gestaoRelacionamentos}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.gestaoRelacionamentos}/170</td>
                     </tr>
                     <tr style="background-color: #e9ecef; font-weight: bold;">
                         <td style="border: 1px solid #ddd; padding: 12px;">TOTAL</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.total}</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.total}/480</td>
                     </tr>
                 </tbody>
             </table>
@@ -356,7 +356,7 @@ function getSubPillarHtml(subPillarAnalysis) {
     return html;
 }
 
-// Updated submit function without image upload
+// Modified submit function that shows chart after email is sent
 function submitResults() {
     const email = document.getElementById('emailInput').value;
     const emailError = document.getElementById('emailError');
@@ -389,9 +389,15 @@ function submitResults() {
             subpillar_html: subPillarHtml
         }).then(function(response) {
             console.log('Admin email sent successfully:', response);
+            
+            // Switch to thank you screen
             document.getElementById('email').classList.remove('active');
             document.getElementById('thanks').classList.add('active');
             currentScreen = 4;
+            
+            // Show only the interactive pie chart after switching screens
+            renderPillarChart(metrics);
+            
         }, function(error) {
             console.error('Admin email error:', error);
             alert('Erro ao enviar resultados ao admin: ' + JSON.stringify(error));
@@ -402,7 +408,7 @@ function submitResults() {
     });
 }
 
-// Draw a pie chart for the 5 pillars
+// Enhanced renderPillarChart function with better interactivity
 function renderPillarChart(metrics) {
     const ctx = document.getElementById('resultsChart').getContext('2d');
     if (window.pillarChartInstance) window.pillarChartInstance.destroy();
@@ -441,27 +447,55 @@ function renderPillarChart(metrics) {
                 data: percentages,
                 backgroundColor: [
                     '#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'
-                ]
+                ],
+                borderWidth: 2,
+                borderColor: '#fff',
+                hoverBorderWidth: 3,
+                hoverBorderColor: '#333'
             }]
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 tooltip: {
                     callbacks: {
                         label: function(context) {
-                            return `${context.label}: ${context.parsed}%`;
+                            const label = context.label || '';
+                            const percentage = context.parsed || 0;
+                            const actualScore = scores[context.dataIndex];
+                            const maxScore = maxPoints[context.dataIndex];
+                            return `${label}: ${percentage}% (${actualScore}/${maxScore} pontos)`;
                         }
-                    }
+                    },
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#333',
+                    borderWidth: 1
                 },
                 legend: {
                     display: true,
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true,
+                        font: {
+                            size: 12
+                        }
+                    }
                 }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
             }
+            // Removed onClick handler - no more popups when clicking slices
         }
     });
 }
 
+// Text-based chart function for emails (from previous solution)
 function getTextBasedChart(metrics) {
     // Calculate max possible points per pillar
     const maxPoints = [

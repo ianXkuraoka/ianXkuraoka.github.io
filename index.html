@@ -146,18 +146,19 @@
 
         <!-- Tela de Agradecimento -->
         <div class="screen" id="thanks">
-            <!--<div class="logo">
-                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
-                <div class="logo-text-group">
-                    <div class="logo-text">DIRECIONAR.ME</div>
-                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
-                </div>
-            </div>-->
             <div class="thank-you-icon">🎉</div>
             <h2>OBRIGADO!</h2>
             <p class="subtitle">Seus resultados foram enviados com sucesso!</p>
-            <canvas id="resultsChart" width="400" height="300"></canvas>
-            <!--<div id="subPillarChartsContainer" style="display: flex; flex-wrap: wrap; gap: 32px; margin-top: 32px;"></div>-->
+            
+            <!-- Interactive Charts Section -->
+            <div class="charts-section" style="margin-top: 30px;">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #333;">Seus Resultados</h3>
+                
+                <!-- Main Pie Chart -->
+                <div class="chart-container" style="position: relative; height: 400px;">
+                    <canvas id="resultsChart"></canvas>
+                </div>
+            </div>
         </div>
     </div>
 
