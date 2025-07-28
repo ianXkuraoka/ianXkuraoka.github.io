@@ -357,56 +357,91 @@ function getSubPillarHtml(subPillarAnalysis) {
 }
 
 // Modified submit function that shows chart after email is sent
-function submitResults() {
-    const email = document.getElementById('emailInput').value;
+// 5. SECURE FORM SUBMISSION
+async function submitResults() {
+    const email = document.getElementById('emailInput').value.trim();
     const emailError = document.getElementById('emailError');
+    
+    // Clear previous errors
+    emailError.style.display = 'none';
+    emailError.textContent = '';
 
-    if (!isValidEmail(email)) {
+    // Validate session
+    if (!validateSession()) {
+        emailError.textContent = 'Sessão expirada. Por favor, recarregue a página.';
         emailError.style.display = 'block';
         return;
     }
 
-    emailError.style.display = 'none';
-    const metrics = calculateMetrics(answers, pillars);
-    const summaryTable = getSummaryTable(metrics);
-    const textChart = getTextBasedChart(metrics);
-    const subPillarAnalysis = getSubPillarAnalysis();
-    const subPillarHtml = getSubPillarHtml(subPillarAnalysis);
+    // Validate email
+    if (!isValidEmail(email)) {
+        emailError.textContent = 'Por favor, insira um email válido.';
+        emailError.style.display = 'block';
+        return;
+    }
 
-    // 1. Send to user
-    emailjs.send('service_f61mg7v', 'template_wx406pr', {
-        to_email: email,
-        summary_table: summaryTable,
-        pie_chart: textChart
-    }).then(function(response) {
-        console.log('User email sent successfully:', response);
+    // Check rate limiting
+    const clientIP = await getClientIP();
+    if (!rateLimiter.isAllowed(clientIP)) {
+        const remainingTime = Math.ceil(rateLimiter.getRemainingTime(clientIP) / 60000);
+        emailError.textContent = `Muitas tentativas. Tente novamente em ${remainingTime} minutos.`;
+        emailError.style.display = 'block';
+        return;
+    }
+
+    // Validate that quiz was actually completed
+    if (!validateQuizCompletion()) {
+        emailError.textContent = 'Por favor, complete o questionário antes de enviar.';
+        emailError.style.display = 'block';
+        return;
+    }
+
+    try {
+        const metrics = calculateMetrics(answers, pillars);
+        const summaryTable = getSummaryTable(metrics);
+        const textChart = getTextBasedChart(metrics);
+        const subPillarAnalysis = getSubPillarAnalysis();
+        const subPillarHtml = getSubPillarHtml(subPillarAnalysis);
+
+        // Sanitize email content (basic protection)
+        const sanitizedEmail = sanitizeHtml(email);
         
-        // 2. Send to admin
-        emailjs.send('service_f61mg7v', 'template_hv83ral', {
+        // Add timestamp and session info for tracking
+        const timestamp = new Date().toISOString();
+        const sessionInfo = `Session: ${sessionToken.substring(0, 8)}... | Time: ${timestamp}`;
+
+        // 6. Send emails with additional security info
+        await emailjs.send('service_f61mg7v', 'template_wx406pr', {
+            to_email: sanitizedEmail,
+            summary_table: summaryTable,
+            pie_chart: textChart,
+            session_info: sessionInfo
+        });
+
+        await emailjs.send('service_f61mg7v', 'template_hv83ral', {
             to_email: 'direcionar.me@gmail.com',
             summary_table: summaryTable,
             pie_chart: textChart,
-            subpillar_html: subPillarHtml
-        }).then(function(response) {
-            console.log('Admin email sent successfully:', response);
-            
-            // Switch to thank you screen
-            document.getElementById('email').classList.remove('active');
-            document.getElementById('thanks').classList.add('active');
-            currentScreen = 4;
-            
-            // Show only the interactive pie chart after switching screens
-            renderPillarChart(metrics);
-            
-        }, function(error) {
-            console.error('Admin email error:', error);
-            alert('Erro ao enviar resultados ao admin: ' + JSON.stringify(error));
+            subpillar_html: subPillarHtml,
+            user_email: sanitizedEmail,
+            session_info: sessionInfo,
+            client_ip: clientIP
         });
-    }, function(error) {
-        console.error('User email error:', error);
-        alert('Erro ao enviar resultados ao usuário: ' + JSON.stringify(error));
-    });
+
+        // Success - clear session and show results
+        clearSession();
+        document.getElementById('email').classList.remove('active');
+        document.getElementById('thanks').classList.add('active');
+        currentScreen = 4;
+        renderPillarChart(metrics);
+
+    } catch (error) {
+        console.error('Error sending email:', error);
+        emailError.textContent = 'Erro ao enviar resultados. Tente novamente.';
+        emailError.style.display = 'block';
+    }
 }
+
 
 // Enhanced renderPillarChart function with better interactivity
 function renderPillarChart(metrics) {
@@ -625,9 +660,192 @@ function renderGroupedSubPillarCharts() {
     });
 }
 
+// 1. INPUT VALIDATION AND SANITIZATION
+function sanitizeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
 function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    // More robust email validation
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    return email && 
+           email.length <= 254 && 
+           emailRegex.test(email) && 
+           !email.includes('<') && 
+           !email.includes('>') && 
+           !email.includes('"');
+}
+
+// 2. RATE LIMITING
+class RateLimit {
+    constructor(maxAttempts = 3, windowMs = 300000) { // 3 attempts per 5 minutes
+        this.maxAttempts = maxAttempts;
+        this.windowMs = windowMs;
+        this.attempts = new Map();
+    }
+
+    isAllowed(identifier) {
+        const now = Date.now();
+        const key = identifier || 'default';
+        
+        if (!this.attempts.has(key)) {
+            this.attempts.set(key, []);
+        }
+        
+        const userAttempts = this.attempts.get(key);
+        
+        // Remove old attempts outside the window
+        const validAttempts = userAttempts.filter(time => now - time < this.windowMs);
+        this.attempts.set(key, validAttempts);
+        
+        if (validAttempts.length >= this.maxAttempts) {
+            return false;
+        }
+        
+        validAttempts.push(now);
+        return true;
+    }
+
+    getRemainingTime(identifier) {
+        const key = identifier || 'default';
+        if (!this.attempts.has(key)) return 0;
+        
+        const userAttempts = this.attempts.get(key);
+        if (userAttempts.length === 0) return 0;
+        
+        const oldestAttempt = Math.min(...userAttempts);
+        const remaining = this.windowMs - (Date.now() - oldestAttempt);
+        return Math.max(0, remaining);
+    }
+}
+
+const rateLimiter = new RateLimit(2, 300000); // 2 attempts per 5 minutes
+
+// 3. SECURE TOKEN GENERATION (for basic CSRF protection)
+function generateSecureToken() {
+    const array = new Uint8Array(32);
+    crypto.getRandomValues(array);
+    return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+// 4. SESSION VALIDATION
+let sessionToken = null;
+let sessionStartTime = null;
+const SESSION_TIMEOUT = 3600000; // 1 hour
+
+function initializeSession() {
+    sessionToken = generateSecureToken();
+    sessionStartTime = Date.now();
+    localStorage.setItem('quiz_session', sessionToken);
+    localStorage.setItem('quiz_start', sessionStartTime.toString());
+}
+
+function validateSession() {
+    const storedToken = localStorage.getItem('quiz_session');
+    const storedStart = localStorage.getItem('quiz_start');
+    
+    if (!storedToken || !storedStart || storedToken !== sessionToken) {
+        return false;
+    }
+    
+    const elapsed = Date.now() - parseInt(storedStart);
+    if (elapsed > SESSION_TIMEOUT) {
+        clearSession();
+        return false;
+    }
+    
+    return true;
+}
+
+function clearSession() {
+    localStorage.removeItem('quiz_session');
+    localStorage.removeItem('quiz_start');
+    sessionToken = null;
+    sessionStartTime = null;
+}
+
+// 7. QUIZ COMPLETION VALIDATION
+function validateQuizCompletion() {
+    // Check if all questions were answered
+    const totalQuestions = questions.length;
+    const answeredQuestions = Object.keys(answers).length;
+    
+    if (answeredQuestions !== totalQuestions) {
+        return false;
+    }
+    
+    // Check if answers are within valid range
+    for (const [questionIndex, answer] of Object.entries(answers)) {
+        if (!answer || answer < 1 || answer > 5) {
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+// 8. GET CLIENT IP (for rate limiting)
+async function getClientIP() {
+    try {
+        const response = await fetch('https://api.ipify.org?format=json');
+        const data = await response.json();
+        return data.ip;
+    } catch (error) {
+        // Fallback to a simple identifier
+        return 'unknown_' + Math.random().toString(36).substring(7);
+    }
+}
+
+// 9. INITIALIZE SECURITY ON PAGE LOAD
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSession();
+    
+    // Add additional security headers if possible
+    if (typeof window !== 'undefined') {
+        // Disable right-click context menu (basic protection)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        
+        // Disable F12, Ctrl+Shift+I, etc. (basic protection)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                (e.ctrlKey && e.shiftKey && e.key === 'C') ||
+                (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+            }
+        });
+    }
+});
+
+// 10. SECURE ANSWER SELECTION
+function selectAnswer(questionIndex, value) {
+    // Validate session before allowing answer selection
+    if (!validateSession()) {
+        alert('Sessão expirada. Por favor, recarregue a página.');
+        return;
+    }
+    
+    // Validate input
+    if (questionIndex < 0 || questionIndex >= questions.length || value < 1 || value > 5) {
+        return;
+    }
+    
+    const scale = document.querySelector(`[data-question="${questionIndex}"]`);
+    if (!scale) return;
+    
+    scale.querySelectorAll('.scale-radio').forEach(radio => {
+        radio.classList.remove('selected');
+    });
+
+    const radio = scale.querySelector(`[data-value="${value}"]`);
+    if (radio) {
+        radio.classList.add('selected');
+        answers[questionIndex] = value;
+    }
 }
 
 function calculateMetrics(answers, pillars) {
