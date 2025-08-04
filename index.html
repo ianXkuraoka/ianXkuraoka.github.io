@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de Inteligência Emocional</title>
+    <title>Inventário de Inteligência Emocional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -49,13 +49,13 @@
                 </div>
             </div>-->
             <div class="description">
-                <h2>Este modelo é baseado nos 5 pilares da Inteligência Emocional segundo a metodologia de Goleman, sendo eles:</h2>
+                <h2>Seja bem vindo(a)!</h2>
+                <h2>Este inventário foi desenvolvido por Valéria Vollmer e Thiago Chaves, baseado nos 4 pilares de Inteligência Emocional, segundo a metodologia de Daniel Goleman, sendo eles:</h2>
                 <ul class="pillars-list">
-                <li><strong>AUTOCONSCIÊNCIA</strong></li>
-                <li><strong>AUTOGESTÃO</strong></li>
-                <li><strong>MOTIVAÇÃO</strong></li>
-                <li><strong>CONSCIÊNCIA SOCIAL</strong></li>
-                <li><strong>GESTÃO DE RELACIONAMENTOS</strong></li>
+                    <li><strong> autoconciencia</strong></li>
+                    <li><strong> autogestão</strong></li>
+                    <li><strong> consciencia social </strong></li>
+                    <li><strong> gestão de relacionamentos</strong></li>
                 </ul>
             </div>
             <button class="btn" onclick="nextScreen()">INICIAR</button>
@@ -73,8 +73,10 @@
             <div class="instructions-panel">
                 <h3>INSTRUÇÕES</h3>
                 <ul class="instructions-list">
-                    <li>Escolha um local tranquilo onde não haja interrupções</li>
-                    <li>Reserve aproximadamente 30 minutos para responder</li>
+                    <li> "Não existe resposta certa ou errada"</li>
+                    <li> Seja sincero(a) para que o diagnóstico reflita seu perfil atual de maneira precisa.</li>
+                    <li> Escolha um local tranquilo sem interrupções</li>
+                    <li> Reserve aproximadamente 30 minutos para responder</li>
                 </ul>
                 <br>
                 <p>As perguntas são baseadas em uma escala Likert, com 5 opções de resposta:</p>
@@ -139,6 +141,7 @@
             <div class="thank-you-icon"></div>
             <h2>OBRIGADO POR RESPONDER!</h2>
             <p class="subtitle">Preencha com seu email para receber os resultados</p>
+            <input type="text" class="name-input" placeholder="escreva seu nome!" id="nameInput" name="nameInput" maxlength="80" required autocomplete="name" />
             <input type="email" class="email-input" placeholder="seunome@gmail.com" id="emailInput">
             <div class="error-message" id="emailError">Por favor, insira um email válido</div>
             <button class="btn" onclick="submitResults()">RECEBER RESULTADOS</button>
@@ -146,9 +149,8 @@
 
         <!-- Tela de Agradecimento -->
         <div class="screen" id="thanks">
-            <div class="thank-you-icon">🎉</div>
-            <h2>OBRIGADO!</h2>
-            <p class="subtitle">Seus resultados foram enviados com sucesso!</p>
+            <h2>Seus resultados foram enviados com sucesso!!</h2>
+            <p class="subtitle">Acesse sua caixa de e-mail para entender seu nível de desenvolvimento em cada competência avaliada</p>
             
             <!-- Interactive Charts Section -->
             <div class="charts-section" style="margin-top: 30px;">

@@ -1,6 +1,7 @@
 [
   {
     "Item": "1",
+    "fundamento": "autogestão",
     "competência": "autocontrole",
     "Pergunta": "Eu consigo manter minhas emoções e impulsos sob controle em momentos de tensão.",
     "Resposta": "1",
@@ -8,6 +9,7 @@
   },
   {
     "Item": "2",
+    "fundamento": "gestão de relacionamento",
     "competência": "trabalho em equipe e colaboração",
     "Pergunta": "Eu ajudo a resolver conflitos de forma construtiva dentro da equipe.",
     "Resposta": "2",
@@ -15,6 +17,7 @@
   },
   {
     "Item": "3",
+    "fundamento": "autogestão",
     "competência": "adaptabilidade",
     "Pergunta": "Eu consigo ajustar rapidamente minhas prioridades em resposta a mudanças inesperadas.",
     "Resposta": "3",
@@ -22,6 +25,8 @@
   },
   {
     "Item": "4",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "sensibilidade aos impactos das decisões",
     "Pergunta": "Eu percebo quando uma decisão organizacional afeta positivamente ou negativamente os colegas ou a equipe.",
     "Resposta": "4",
@@ -29,13 +34,16 @@
   },
   {
     "Item": "5",
-    "competência": "transparência e coerência com s valores",
+    "fundamento": "autoconsciência",
+    "competência": "transparência e coerência com os valores",
     "Pergunta": "Eu mantenho meus valores mesmo quando estou sob pressão para agir de forma diferente.",
     "Resposta": "5",
     "Verifica": "OK"
   },
   {
     "Item": "6",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "leitura de clima organizacional",
     "Pergunta": "Eu identifico quando o moral da equipe está elevado ou quando há sinais de desmotivação e tensão.",
     "Resposta": "2",
@@ -43,6 +51,7 @@
   },
   {
     "Item": "7",
+    "fundamento": "autogestão",
     "competência": "flexibilidade",
     "Pergunta": "Eu ajusto minhas abordagens ao trabalhar em equipe ou em projetos colaborativos.",
     "Resposta": "3",
@@ -50,6 +59,7 @@
   },
   {
     "Item": "8",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de relacionamentos (networking)",
     "Pergunta": "Eu mantenho contato regular com minha rede, fortalecendo vínculos e trocas significativas.",
     "Resposta": "4",
@@ -57,6 +67,8 @@
   },
   {
     "Item": "9",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "compaixão",
     "Pergunta": "Eu demonstro interesse verdadeiro pelas pessoas ao meu redor, prestando atenção às suas necessidades emocionais.",
     "Resposta": "5",
@@ -64,6 +76,8 @@
   },
   {
     "Item": "10",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "percepção da cultura organizacional",
     "Pergunta": "Eu percebo como os valores e normas influenciam as decisões e interações no ambiente organizacional.",
     "Resposta": "1",
@@ -71,6 +85,8 @@
   },
   {
     "Item": "11",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "sensibilidade às diferenças culturais",
     "Pergunta": "Eu respeito e aceito valores ou crenças diferentes das minhas.",
     "Resposta": "1",
@@ -78,6 +94,7 @@
   },
   {
     "Item": "12",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de conflitos",
     "Pergunta": "Eu ajudo a mediar situações de conflito e a garantir que todas as partes sejam ouvidas.",
     "Resposta": "1",
@@ -85,6 +102,7 @@
   },
   {
     "Item": "13",
+    "fundamento": "autogestão",
     "competência": "automotivação",
     "Pergunta": "Eu mantenho determinação mesmo diante de fracassos.",
     "Resposta": "1",
@@ -92,6 +110,7 @@
   },
   {
     "Item": "14",
+    "fundamento": "autoconsciência",
     "competência": "consciência corporal",
     "Pergunta": "Eu percebo como minhas emoções afetam meu corpo fisicamente.",
     "Resposta": "1",
@@ -99,6 +118,8 @@
   },
   {
     "Item": "15",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "leitura de clima organizacional",
     "Pergunta": "Eu compreendo como o clima emocional influencia o desempenho, a colaboração e o bem-estar no ambiente de trabalho.",
     "Resposta": "2",
@@ -106,6 +127,7 @@
   },
   {
     "Item": "16",
+    "fundamento": "autoconsciência",
     "competência": "autoavaliação precisa",
     "Pergunta": "Eu conheço meus limites e capacidades de forma equilibrada, sem supervalorizá-los ou subestimá-los.",
     "Resposta": "2",
@@ -113,6 +135,8 @@
   },
   {
     "Item": "17",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "influência nas relações interpessoais",
     "Pergunta": "Eu ajusto minhas ações para melhorar a dinâmica entre as pessoas e promover um ambiente de trabalho mais colaborativo.",
     "Resposta": "2",
@@ -120,6 +144,7 @@
   },
   {
     "Item": "18",
+    "fundamento": "gestão de relacionamento",
     "competência": "liderança inspiradora",
     "Pergunta": "Eu engajo as pessoas a trabalharem de forma colaborativa e eficiente para alcançar metas.",
     "Resposta": "3",
@@ -127,6 +152,7 @@
   },
   {
     "Item": "19",
+    "fundamento": "autogestão",
     "competência": "gestão do estresse",
     "Pergunta": "Eu consigo manter a qualidade do meu trabalho sob prazos apertados.",
     "Resposta": "3",
@@ -134,6 +160,7 @@
   },
   {
     "Item": "20",
+    "fundamento": "autoconsciência",
     "competência": "reflexão",
     "Pergunta": "Eu ajusto meu comportamento com base no feedback recebido.",
     "Resposta": "3",
@@ -141,6 +168,8 @@
   },
   {
     "Item": "21",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "compreensão emocional",
     "Pergunta": "Eu sou capaz de reconhecer que, em uma mesma situação, outra pessoa pode se expressar emocionalmente diferente de mim.",
     "Resposta": "3",
@@ -148,6 +177,7 @@
   },
   {
     "Item": "22",
+    "fundamento": "gestão de relacionamento",
     "competência": "negociação",
     "Pergunta": "Eu utilizo comunicação clara e empática durante negociações.",
     "Resposta": "4",
@@ -155,6 +185,7 @@
   },
   {
     "Item": "23",
+    "fundamento": "autoconsciência",
     "competência": "autoconsciência emocional",
     "Pergunta": "Eu percebo minhas emoções em momentos de euforia, conflito ou pressão.",
     "Resposta": "4",
@@ -162,6 +193,7 @@
   },
   {
     "Item": "24",
+    "fundamento": "gestão de relacionamento",
     "competência": "comunicação assertiva",
     "Pergunta": "Eu expresso minhas ideias de maneira clara e compreensível.",
     "Resposta": "4",
@@ -169,6 +201,8 @@
   },
   {
     "Item": "25",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "influência nas relações interpessoais",
     "Pergunta": "Eu identifico como minhas próprias relações interpessoais afetam o ambiente organizacional e ajo para melhorar a comunicação e colaboração.",
     "Resposta": "1",
@@ -176,6 +210,7 @@
   },
   {
     "Item": "26",
+    "fundamento": "autogestão",
     "competência": "autocontrole",
     "Pergunta": "Eu tomo decisões racionais mesmo sob pressão extrema.",
     "Resposta": "1",
@@ -183,6 +218,8 @@
   },
   {
     "Item": "27",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "escuta ativa",
     "Pergunta": "Eu demonstro empatia ao responder às necessidades e preocupações dos outros.",
     "Resposta": "1",
@@ -190,6 +227,7 @@
   },
   {
     "Item": "28",
+    "fundamento": "autoconsciência",
     "competência": "autoavaliação precisa",
     "Pergunta": "Eu tenho clareza sobre como minhas competências se comparam às de outras pessoas em minha área de atuação.",
     "Resposta": "1",
@@ -197,6 +235,7 @@
   },
   {
     "Item": "29",
+    "fundamento": "gestão de relacionamento",
     "competência": "liderança inspiradora",
     "Pergunta": "Eu crio um ambiente que motiva os membros da equipe a se comprometerem com os objetivos.",
     "Resposta": "3",
@@ -204,6 +243,7 @@
   },
   {
     "Item": "30",
+    "fundamento": "autogestão",
     "competência": "resiliência",
     "Pergunta": "Eu mantenho meu desempenho mesmo sob estresse ou pressão prolongada.",
     "Resposta": "3",
@@ -211,6 +251,8 @@
   },
   {
     "Item": "31",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "observação e leitura social",
     "Pergunta": "Eu percebo quando as pessoas estão desconfortáveis ou insatisfeitas, mesmo que não expressem diretamente.",
     "Resposta": "3",
@@ -218,6 +260,8 @@
   },
   {
     "Item": "32",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "observação e leitura social",
     "Pergunta": "Eu identifico as necessidades não verbalizadas de meus colegas de trabalho.",
     "Resposta": "4",
@@ -225,6 +269,7 @@
   },
   {
     "Item": "33",
+    "fundamento": "gestão de relacionamento",
     "competência": "trabalho em equipe e colaboração",
     "Pergunta": "Eu valorizo as ideias e perspectivas dos outros, integrando-as nas decisões coletivas.",
     "Resposta": "4",
@@ -232,6 +277,7 @@
   },
   {
     "Item": "34",
+    "fundamento": "autoconsciência",
     "competência": "autoconfiança e autoestima",
     "Pergunta": "Eu reconheço meu valor independentemente de validação externa.",
     "Resposta": "2",
@@ -239,6 +285,7 @@
   },
   {
     "Item": "35",
+    "fundamento": "autogestão",
     "competência": "autodisciplina",
     "Pergunta": "Eu sigo planos e rotinas com consistência para alcançar minhas metas.",
     "Resposta": "2",
@@ -246,6 +293,8 @@
   },
   {
     "Item": "36",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "observação e leitura social",
     "Pergunta": "Eu noto os sinais não verbais das pessoas ao meu redor (como linguagem corporal e expressões faciais) para entender suas emoções.",
     "Resposta": "2",
@@ -253,6 +302,8 @@
   },
   {
     "Item": "37",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "percepção da cultura organizacional",
     "Pergunta": "Eu identifico o que a cultura organizacional da minha empresa espera dos colaboradores em relação ao comportamento.",
     "Resposta": "2",
@@ -260,6 +311,8 @@
   },
   {
     "Item": "38",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "compreensão emocional",
     "Pergunta": "Eu consigo perceber como os outros estão se sentindo, mesmo quando não se comunicam verbalmente.",
     "Resposta": "2",
@@ -267,6 +320,7 @@
   },
   {
     "Item": "39",
+    "fundamento": "autoconsciência",
     "competência": "autoconsciência emocional",
     "Pergunta": "Eu identifico e compreendo minhas emoções e o impacto delas em minhas ações.",
     "Resposta": "1",
@@ -274,6 +328,8 @@
   },
   {
     "Item": "40",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "sensibilidade às diferenças culturais",
     "Pergunta": "Eu considero o contexto cultural ao interpretar as ações de alguém.",
     "Resposta": "1",
@@ -281,13 +337,15 @@
   },
   {
     "Item": "41",
-    "competência": "transparência e coerência com s valores",
+    "fundamento": "autoconsciência",
+    "competência": "transparência e coerência com os valores",
     "Pergunta": "Eu mantenho coerência entre o que digo e o que faço, garantindo minha integridade.",
     "Resposta": "1",
     "Verifica": "OK"
   },
   {
     "Item": "42",
+    "fundamento": "gestão de relacionamento",
     "competência": "liderança inspiradora",
     "Pergunta": "Eu lidero pelo exemplo, demonstrando os comportamentos e valores que espero dos outros.",
     "Resposta": "4",
@@ -295,6 +353,8 @@
   },
   {
     "Item": "43",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "escuta ativa",
     "Pergunta": "Eu ouço atentamente as preocupações dos outros antes de responder.",
     "Resposta": "3",
@@ -302,6 +362,7 @@
   },
   {
     "Item": "44",
+    "fundamento": "autogestão",
     "competência": "automotivação",
     "Pergunta": "Eu busco alcançar meus objetivos, mesmo sem cobrança externa.",
     "Resposta": "2",
@@ -309,6 +370,7 @@
   },
   {
     "Item": "45",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de relacionamentos (networking)",
     "Pergunta": "Eu dedico tempo para estabelecer novas conexões profissionais que possam ser benéficas a longo prazo.",
     "Resposta": "1",
@@ -316,6 +378,7 @@
   },
   {
     "Item": "46",
+    "fundamento": "autoconsciência",
     "competência": "consciência corporal",
     "Pergunta": "Eu uso minha consciência corporal para regular minhas emoções.",
     "Resposta": "1",
@@ -323,6 +386,8 @@
   },
   {
     "Item": "47",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "sensibilidade às diferenças culturais",
     "Pergunta": "Eu busco aprender sobre outras culturas para me comunicar de maneira mais eficaz.",
     "Resposta": "2",
@@ -330,6 +395,8 @@
   },
   {
     "Item": "48",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "leitura de clima organizacional",
     "Pergunta": "Eu percebo com facilidade o clima emocional predominante na minha equipe e na organização.",
     "Resposta": "3",
@@ -337,6 +404,7 @@
   },
   {
     "Item": "49",
+    "fundamento": "autogestão",
     "competência": "flexibilidade",
     "Pergunta": "Eu sou capaz de mudar de opinião quando surgem argumentos mais consistentes.",
     "Resposta": "4",
@@ -344,6 +412,8 @@
   },
   {
     "Item": "50",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "sensibilidade aos impactos das decisões",
     "Pergunta": "Eu estou atento ao impacto das decisões estratégicas sobre diferentes grupos dentro da organização.",
     "Resposta": "5",
@@ -351,6 +421,7 @@
   },
   {
     "Item": "51",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de conflitos",
     "Pergunta": "Eu facilito a comunicação para resolver desacordos de forma eficaz.",
     "Resposta": "5",
@@ -358,6 +429,7 @@
   },
   {
     "Item": "52",
+    "fundamento": "autogestão",
     "competência": "gestão do estresse",
     "Pergunta": "Eu percebo os sinais do meu corpo e mente que indicam aumento do estresse.",
     "Resposta": "4",
@@ -365,6 +437,7 @@
   },
   {
     "Item": "53",
+    "fundamento": "autogestão",
     "competência": "autocontrole",
     "Pergunta": "Eu mantenho a calma e o foco em situações estressantes.",
     "Resposta": "3",
@@ -372,6 +445,7 @@
   },
   {
     "Item": "54",
+    "fundamento": "gestão de relacionamento",
     "competência": "trabalho em equipe e colaboração",
     "Pergunta": "Eu contribuo ativamente para o sucesso da equipe utilizando minhas habilidades de forma colaborativa.",
     "Resposta": "2",
@@ -379,6 +453,7 @@
   },
   {
     "Item": "55",
+    "fundamento": "autoconsciência",
     "competência": "autoconfiança e autoestima",
     "Pergunta": "Eu me sinto seguro em minhas decisões, mesmo diante de incertezas.",
     "Resposta": "1",
@@ -386,6 +461,7 @@
   },
   {
     "Item": "56",
+    "fundamento": "autogestão",
     "competência": "adaptabilidade",
     "Pergunta": "Eu me adapto a mudanças rápidas no ambiente de trabalho.",
     "Resposta": "1",
@@ -393,6 +469,8 @@
   },
   {
     "Item": "57",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "compaixão",
     "Pergunta": "Eu ofereço ajuda espontaneamente quando percebo que alguém está em dificuldades, mesmo que a pessoa não peça.",
     "Resposta": "2",
@@ -400,6 +478,7 @@
   },
   {
     "Item": "58",
+    "fundamento": "autogestão",
     "competência": "adaptabilidade",
     "Pergunta": "Eu ajusto meu estilo de comunicação conforme a situação exige.",
     "Resposta": "3",
@@ -407,6 +486,8 @@
   },
   {
     "Item": "59",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "sensibilidade aos impactos das decisões",
     "Pergunta": "Quando tomo decisões, eu considero o impacto delas sobre os diferentes interesses e necessidades das pessoas envolvidas.",
     "Resposta": "2",
@@ -414,6 +495,7 @@
   },
   {
     "Item": "60",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de conflitos",
     "Pergunta": "Eu entendo as perspectivas de todos antes de tomar decisões em um conflito.",
     "Resposta": "2",
@@ -421,6 +503,7 @@
   },
   {
     "Item": "61",
+    "fundamento": "autoconsciência",
     "competência": "reflexão",
     "Pergunta": "Eu reflito sobre minhas ações para identificar áreas de melhoria.",
     "Resposta": "2",
@@ -428,6 +511,7 @@
   },
   {
     "Item": "62",
+    "fundamento": "autoconsciência",
     "competência": "autoconsciência emocional",
     "Pergunta": "Eu consigo nomear claramente o que estou sentindo em diferentes situações.",
     "Resposta": "2",
@@ -435,6 +519,7 @@
   },
   {
     "Item": "63",
+    "fundamento": "gestão de relacionamento",
     "competência": "comunicação assertiva",
     "Pergunta": "Eu adapto minha comunicação conforme as necessidades dos diferentes interlocutores.",
     "Resposta": "2",
@@ -442,6 +527,7 @@
   },
   {
     "Item": "64",
+    "fundamento": "autogestão",
     "competência": "resiliência",
     "Pergunta": "Eu mantenho uma atitude positiva diante de fracassos ou dificuldades.",
     "Resposta": "2",
@@ -449,6 +535,8 @@
   },
   {
     "Item": "65",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "compreensão emocional",
     "Pergunta": "Eu ajusto minha abordagem com base nas emoções identificadas nas pessoas ao meu redor.",
     "Resposta": "2",
@@ -456,6 +544,7 @@
   },
   {
     "Item": "66",
+    "fundamento": "autogestão",
     "competência": "autodisciplina",
     "Pergunta": "Eu persisto em meus objetivos até serem alcançados, mesmo diante de dificuldades.",
     "Resposta": "2",
@@ -463,6 +552,7 @@
   },
   {
     "Item": "67",
+    "fundamento": "autogestão",
     "competência": "resiliência",
     "Pergunta": "Eu aprendo com experiências difíceis para melhorar e crescer.",
     "Resposta": "2",
@@ -470,6 +560,7 @@
   },
   {
     "Item": "68",
+    "fundamento": "gestão de relacionamento",
     "competência": "comunicação assertiva",
     "Pergunta": "Eu verifico se minha mensagem foi compreendida corretamente pelos outros.",
     "Resposta": "2",
@@ -477,6 +568,7 @@
   },
   {
     "Item": "69",
+    "fundamento": "autoconsciência",
     "competência": "autoavaliação precisa",
     "Pergunta": "Eu me coloco adequadamente nos desafios, identificando oportunidades e evitando a autossabotagem.",
     "Resposta": "2",
@@ -484,6 +576,7 @@
   },
   {
     "Item": "70",
+    "fundamento": "autogestão",
     "competência": "autodisciplina",
     "Pergunta": "Eu me mantenho focado mesmo diante de distrações.",
     "Resposta": "2",
@@ -491,6 +584,7 @@
   },
   {
     "Item": "71",
+    "fundamento": "autoconsciência",
     "competência": "autoconfiança e autoestima",
     "Pergunta": "Eu confio em minhas habilidades para enfrentar desafios de maneira segura.",
     "Resposta": "2",
@@ -498,6 +592,8 @@
   },
   {
     "Item": "72",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "sensibilidade às diferenças culturais",
     "Pergunta": "Eu ajusto minha forma de comunicação ao interagir com pessoas de diferentes origens culturais.",
     "Resposta": "2",
@@ -505,6 +601,7 @@
   },
   {
     "Item": "73",
+    "fundamento": "autogestão",
     "competência": "gestão do estresse",
     "Pergunta": "Eu busco apoio ou utilizo técnicas para gerenciar o estresse e manter o foco.",
     "Resposta": "2",
@@ -512,6 +609,8 @@
   },
   {
     "Item": "74",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "percepção da cultura organizacional",
     "Pergunta": "Eu estou ciente dos valores e normas que moldam o ambiente de trabalho na minha organização.",
     "Resposta": "2",
@@ -519,13 +618,15 @@
   },
   {
     "Item": "75",
-    "competência": "transparência e coerência com s valores",
+    "fundamento": "autoconsciência",
+    "competência": "transparência e coerência com os valores",
     "Pergunta": "Eu ajo com honestidade em minhas interações profissionais.",
     "Resposta": "5",
     "Verifica": "OK"
   },
   {
     "Item": "76",
+    "fundamento": "autoconsciência",
     "competência": "consciência corporal",
     "Pergunta": "Eu noto mudanças físicas, como tensão muscular, quando estou sob estresse emocional.",
     "Resposta": "5",
@@ -533,6 +634,7 @@
   },
   {
     "Item": "77",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de relacionamentos (networking)",
     "Pergunta": "Eu me esforço para construir relações fortes e de apoio mútuo com colegas e parceiros.",
     "Resposta": "4",
@@ -540,6 +642,7 @@
   },
   {
     "Item": "78",
+    "fundamento": "gestão de relacionamento",
     "competência": "liderança inspiradora",
     "Pergunta": "Eu comunico uma visão clara que inspira os outros a darem o melhor de si.",
     "Resposta": "3",
@@ -547,6 +650,7 @@
   },
   {
     "Item": "79",
+    "fundamento": "autogestão",
     "competência": "flexibilidade",
     "Pergunta": "Eu considero novas ideias para resolver problemas, mesmo que desafiem o status quo.",
     "Resposta": "2",
@@ -554,6 +658,8 @@
   },
   {
     "Item": "80",
+    "fundamento": "consciência social",
+    "subfundamento": "consciência organizacional",
     "competência": "influência nas relações interpessoais",
     "Pergunta": "Eu percebo como as relações entre os colegas influenciam as interações no trabalho.",
     "Resposta": "1",
@@ -561,6 +667,8 @@
   },
   {
     "Item": "81",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "compaixão",
     "Pergunta": "Eu procuro entender o sofrimento dos outros e me esforço para aliviar esse sofrimento de forma respeitosa e solidária.",
     "Resposta": "1",
@@ -568,6 +676,7 @@
   },
   {
     "Item": "82",
+    "fundamento": "gestão de relacionamento",
     "competência": "negociação",
     "Pergunta": "Eu busco soluções que atendem as necessidades de todas as partes.",
     "Resposta": "2",
@@ -575,6 +684,7 @@
   },
   {
     "Item": "83",
+    "fundamento": "autoconsciência",
     "competência": "reflexão",
     "Pergunta": "Eu aprendo com os erros para evitá-los no futuro.",
     "Resposta": "3",
@@ -582,6 +692,8 @@
   },
   {
     "Item": "84",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "escuta ativa",
     "Pergunta": "Eu faço perguntas para garantir que entendi corretamente o que foi dito.",
     "Resposta": "4",
@@ -589,6 +701,7 @@
   },
   {
     "Item": "85",
+    "fundamento": "gestão de relacionamento",
     "competência": "negociação",
     "Pergunta": "Eu mantenho uma postura ética e respeitosa em todas as negociações.",
     "Resposta": "5",
@@ -596,6 +709,7 @@
   },
   {
     "Item": "86",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de relacionamentos (networking)",
     "Pergunta": "Eu apoio os outros quando necessário, promovendo confiança e colaboração.",
     "Resposta": "2",
@@ -603,6 +717,7 @@
   },
   {
     "Item": "87",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de conflitos",
     "Pergunta": "Eu abordo os conflitos com a intenção de encontrar soluções justas.",
     "Resposta": "3",
@@ -610,6 +725,7 @@
   },
   {
     "Item": "88",
+    "fundamento": "autogestão",
     "competência": "automotivação",
     "Pergunta": "Eu me sinto motivado a buscar novas metas continuamente.",
     "Resposta": "4",
@@ -617,6 +733,7 @@
   },
   {
     "Item": "89",
+    "fundamento": "gestão de relacionamento",
     "competência": "trabalho em equipe e colaboração",
     "Pergunta": "Eu respeito as contribuições dos outros membros da equipe.",
     "Resposta": "5",
@@ -624,6 +741,7 @@
   },
   {
     "Item": "90",
+    "fundamento": "autoconsciência",
     "competência": "consciência corporal",
     "Pergunta": "Eu percebo quando preciso pausar ou descansar com base nos sinais do meu corpo.",
     "Resposta": "3",
@@ -631,6 +749,8 @@
   },
   {
     "Item": "91",
+    "fundamento": "consciência social",
+    "subfundamento": "empatia",
     "competência": "escuta ativa",
     "Pergunta": "Eu mantenho uma escuta ativa mesmo em situações de discordância ou pressão.",
     "Resposta": "4",
@@ -638,6 +758,7 @@
   },
   {
     "Item": "92",
+    "fundamento": "gestão de relacionamento",
     "competência": "liderança inspiradora",
     "Pergunta": "Eu escuto e reconheço as contribuições das pessoas como parte do processo de inspiração e liderança.",
     "Resposta": "5",
@@ -645,6 +766,7 @@
   },
   {
     "Item": "93",
+    "fundamento": "gestão de relacionamento",
     "competência": "negociação",
     "Pergunta": "Eu busco construir acordos criativos que gerem valor mútuo e fortaleçam os relacionamentos.",
     "Resposta": "2",
@@ -652,6 +774,7 @@
   },
   {
     "Item": "94",
+    "fundamento": "gestão de relacionamento",
     "competência": "trabalho em equipe e colaboração",
     "Pergunta": "Eu demonstro confiança nos colegas e reconheço a interdependência como chave para o sucesso coletivo.",
     "Resposta": "5",
@@ -659,6 +782,7 @@
   },
   {
     "Item": "95",
+    "fundamento": "gestão de relacionamento",
     "competência": "comunicação assertiva",
     "Pergunta": "Eu expresso sentimentos difíceis com respeito, preservando relações saudáveis mesmo em situações desafiadoras.",
     "Resposta": "4",
@@ -666,6 +790,7 @@
   },
   {
     "Item": "96",
+    "fundamento": "gestão de relacionamento",
     "competência": "gestão de relacionamentos (networking)",
     "Pergunta": "Eu utilizo minha rede para criar pontes entre pessoas e áreas, fortalecendo alianças estratégicas.",
     "Resposta": "2",

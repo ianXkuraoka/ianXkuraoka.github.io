@@ -4,69 +4,34 @@ let answers = {};
 let questions = [];
 let pillars = {};
 
-// Mapping from competência to pilar
-const competenciaToPilar = {
-    "autoconsciência emocional": "AUTOCONSCIÊNCIA",
-    "autoavaliação precisa": "AUTOCONSCIÊNCIA",
-    "consciência corporal": "AUTOCONSCIÊNCIA",
-    "autoconfiança e autoestima": "AUTOCONSCIÊNCIA",
-    "autocontrole": "AUTOGESTÃO",
-    "gestão do estresse": "AUTOGESTÃO",
-    "adaptabilidade": "AUTOGESTÃO",
-    "autodisciplina": "AUTOGESTÃO",
-    "automotivação": "MOTIVAÇÃO",
-    "resiliência": "MOTIVAÇÃO",
-    "reflexão": "MOTIVAÇÃO",
-    "transparência e coerência com s valores": "MOTIVAÇÃO",
-    "compreensão emocional": "CONSCIÊNCIA_SOCIAL",
-    "sensibilidade às diferenças culturais": "CONSCIÊNCIA_SOCIAL",
-    "observação e leitura social": "CONSCIÊNCIA_SOCIAL",
-    "leitura de clima organizacional": "CONSCIÊNCIA_SOCIAL",
-    "trabalho em equipe e colaboração": "GESTÃO_DE_RELACIONAMENTOS",
-    "comunicação assertiva": "GESTÃO_DE_RELACIONAMENTOS",
-    "gestão de conflitos": "GESTÃO_DE_RELACIONAMENTOS",
-    "gestão de relacionamentos (networking)": "GESTÃO_DE_RELACIONAMENTOS",
-    "negociação": "GESTÃO_DE_RELACIONAMENTOS",
-    "liderança inspiradora": "GESTÃO_DE_RELACIONAMENTOS",
-    "influência nas relações interpessoais": "GESTÃO_DE_RELACIONAMENTOS",
-    "compaixão": "CONSCIÊNCIA_SOCIAL",
-    "flexibilidade": "AUTOGESTÃO",
-    "sensibilidade aos impactos das decisões": "CONSCIÊNCIA_SOCIAL",
-    "percepção da cultura organizacional": "CONSCIÊNCIA_SOCIAL",
-    "escuta ativa": "GESTÃO_DE_RELACIONAMENTOS"
-    // Add more as needed
-};
-
 // Carregar perguntas do arquivo JSON
 async function fetchQuestions() {
     const response = await fetch('data/questions.json');
     const questionsData = await response.json();
 
-    // Group questions by pillar
+    // Group questions by pillar using "fundamento"
     pillars = {
         AUTOCONSCIÊNCIA: [],
         AUTOGESTÃO: [],
-        MOTIVAÇÃO: [],
         CONSCIÊNCIA_SOCIAL: [],
-        GESTÃO_DE_RELACIONAMENTOS: []
+        GESTÃO_DE_RELACIONAMENTO: []
     };
 
     questionsData.forEach(q => {
-        if (!q.competência) return;
-        const competenciaKey = q.competência.trim().toLowerCase();
-        const pilar = competenciaToPilar[competenciaKey];
-        if (pilar && pillars[pilar]) {
+        if (!q.fundamento) return;
+        // Normalize to uppercase and underscores
+        const pilar = q.fundamento.trim().toUpperCase().replace(/ /g, '_');
+        if (pillars[pilar]) {
             pillars[pilar].push(q);
         }
     });
 
-    // Convert pillars object to array of arrays for compatibility
+    // Flatten questions for navigation
     questions = [
-    ...pillars.AUTOCONSCIÊNCIA,
-    ...pillars.AUTOGESTÃO,
-    ...pillars.MOTIVAÇÃO,
-    ...pillars.CONSCIÊNCIA_SOCIAL,
-    ...pillars.GESTÃO_DE_RELACIONAMENTOS
+        ...pillars.AUTOCONSCIÊNCIA,
+        ...pillars.AUTOGESTÃO,
+        ...pillars.CONSCIÊNCIA_SOCIAL,
+        ...pillars.GESTÃO_DE_RELACIONAMENTO
     ];
 }
 
@@ -192,9 +157,10 @@ function nextQuestionScreen() {
 
 function updateProgress() {
     const totalPages = Math.ceil(questions.length / 8);
-    const progress = ((currentQuestionSet + 1) / totalPages) * 100;
+    // Progress goes from 0 to 12 (not 1 to 12)
+    const progress = (currentQuestionSet / (totalPages - 1)) * 100;
     document.getElementById('progressFill').style.width = progress + '%';
-    document.getElementById('currentStep').textContent = currentQuestionSet + 1;
+    document.getElementById('currentStep').textContent = currentQuestionSet;
 }
 
 function updateNavigationButtons() {
@@ -207,26 +173,23 @@ function updateNavigationButtons() {
 }
 
 function getPieChartImage(metrics) {
-    // Create a smaller canvas to reduce file size
     const canvas = document.createElement('canvas');
-    canvas.width = 300; // Reduced from 400
-    canvas.height = 225; // Reduced from 300
+    canvas.width = 300;
+    canvas.height = 225;
     const ctx = canvas.getContext('2d');
 
-    // Calculate max possible points per pillar (number of questions * 5)
+    // Calculate max possible points per pillar
     const maxPoints = [
         pillars.AUTOCONSCIÊNCIA.length * 5,
         pillars.AUTOGESTÃO.length * 5,
-        pillars.MOTIVAÇÃO.length * 5,
         pillars.CONSCIÊNCIA_SOCIAL.length * 5,
-        pillars.GESTÃO_DE_RELACIONAMENTOS.length * 5
+        pillars.GESTÃO_DE_RELACIONAMENTO.length * 5
     ];
     const scores = [
         metrics.autoconsciencia,
         metrics.autogestao,
-        metrics.motivacao,
         metrics.conscienciaSocial,
-        metrics.gestaoRelacionamentos
+        metrics.gestaoRelacionamento
     ];
     const percentages = scores.map((score, i) =>
         maxPoints[i] ? Math.round((score / maxPoints[i]) * 100) : 0
@@ -238,15 +201,14 @@ function getPieChartImage(metrics) {
             labels: [
                 'Autoconsciência',
                 'Autogestão',
-                'Motivação',
                 'Consciência Social',
-                'Gestão de Relacionamentos'
+                'Gestão de Relacionamento'
             ],
             datasets: [{
                 label: 'Percentual',
                 data: percentages,
                 backgroundColor: [
-                    '#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'
+                    '#FD7C50', '#FDC350', '#50BFFD', '#A950FD'
                 ]
             }]
         },
@@ -258,24 +220,21 @@ function getPieChartImage(metrics) {
         }
     });
 
-    // Use JPEG format with compression to reduce size
     return canvas.toDataURL('image/jpeg', 0.7);
 }
 
 function getSubPillarAnalysis() {
-    // Group questions by pillar and subpillar
     const pillarGroups = {
         AUTOCONSCIÊNCIA: [],
         AUTOGESTÃO: [],
-        MOTIVAÇÃO: [],
         CONSCIÊNCIA_SOCIAL: [],
-        GESTÃO_DE_RELACIONAMENTOS: []
+        GESTÃO_DE_RELACIONAMENTO: []
     };
 
     questions.forEach(q => {
-        const competenciaKey = q.competência ? q.competência.trim().toLowerCase() : '';
-        const pilar = competenciaToPilar[competenciaKey];
-        if (pilar && pillarGroups[pilar]) {
+        if (!q.fundamento) return;
+        const pilar = q.fundamento.trim().toUpperCase().replace(/ /g, '_');
+        if (pillars[pilar]) {
             pillarGroups[pilar].push(q);
         }
     });
@@ -284,9 +243,13 @@ function getSubPillarAnalysis() {
     Object.entries(pillarGroups).forEach(([pillar, qs]) => {
         const subScores = {};
         qs.forEach(q => {
-            if (!q.competência) return;
-            if (!subScores[q.competência]) subScores[q.competência] = 0;
-            subScores[q.competência] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
+            // For consciência social, use subfundamento if present
+            let subKey = q.competência;
+            if (pillar === 'CONSCIÊNCIA_SOCIAL' && q.subfundamento) {
+                subKey = `${q.subfundamento} - ${q.competência}`;
+            }
+            if (!subScores[subKey]) subScores[subKey] = 0;
+            subScores[subKey] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
         });
         analysis[pillar] = subScores;
     });
@@ -301,33 +264,49 @@ function getSummaryTable(metrics) {
                 <thead>
                     <tr style="background-color: #f8f9fa;">
                         <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Pilar</th>
-                        <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Pontuação</th>
+                        <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Média</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td style="border: 1px solid #ddd; padding: 12px;">Autoconsciência</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autoconsciencia}/65</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
+                            ${(metrics.autoconsciencia && pillars.AUTOCONSCIÊNCIA.length) 
+                                ? (metrics.autoconsciencia / pillars.AUTOCONSCIÊNCIA.length).toFixed(2) 
+                                : '0.00'}
+                        </td>
                     </tr>
                     <tr style="background-color: #f8f9fa;">
                         <td style="border: 1px solid #ddd; padding: 12px;">Autogestão</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.autogestao}/75</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
+                            ${(metrics.autogestao && pillars.AUTOGESTÃO.length) 
+                                ? (metrics.autogestao / pillars.AUTOGESTÃO.length).toFixed(2) 
+                                : '0.00'}
+                        </td>
                     </tr>
                     <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">Motivação</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.motivacao}/60</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">Consciência Social</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
+                            ${(metrics.conscienciaSocial && pillars.CONSCIÊNCIA_SOCIAL.length) 
+                                ? (metrics.conscienciaSocial / pillars.CONSCIÊNCIA_SOCIAL.length).toFixed(2) 
+                                : '0.00'}
+                        </td>
                     </tr>
                     <tr style="background-color: #f8f9fa;">
-                        <td style="border: 1px solid #ddd; padding: 12px;">Consciência Social</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.conscienciaSocial}/110</td>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid #ddd; padding: 12px;">Gestão de Relacionamentos</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.gestaoRelacionamentos}/170</td>
+                        <td style="border: 1px solid #ddd; padding: 12px;">Gestão de Relacionamento</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
+                            ${(metrics.gestaoRelacionamento && pillars.GESTÃO_DE_RELACIONAMENTO.length) 
+                                ? (metrics.gestaoRelacionamento / pillars.GESTÃO_DE_RELACIONAMENTO.length).toFixed(2) 
+                                : '0.00'}
+                        </td>
                     </tr>
                     <tr style="background-color: #e9ecef; font-weight: bold;">
                         <td style="border: 1px solid #ddd; padding: 12px;">TOTAL</td>
-                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">${metrics.total}/480</td>
+                        <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">
+                            ${(metrics.total && questions.length) 
+                                ? (metrics.total / questions.length).toFixed(2) 
+                                : '0.00'}
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -359,6 +338,7 @@ function getSubPillarHtml(subPillarAnalysis) {
 // Modified submit function that shows chart after email is sent
 // 5. SECURE FORM SUBMISSION
 async function submitResults() {
+    const name = document.getElementById('nameInput').value.trim();
     const email = document.getElementById('emailInput').value.trim();
     const emailError = document.getElementById('emailError');
     
@@ -369,6 +349,13 @@ async function submitResults() {
     // Validate session
     if (!validateSession()) {
         emailError.textContent = 'Sessão expirada. Por favor, recarregue a página.';
+        emailError.style.display = 'block';
+        return;
+    }
+
+    // Validate name
+    if (!name || name.length < 2) {
+        emailError.textContent = 'Por favor, insira seu nome.';
         emailError.style.display = 'block';
         return;
     }
@@ -413,6 +400,7 @@ async function submitResults() {
         // 6. Send emails with additional security info
         await emailjs.send('service_f61mg7v', 'template_wx406pr', {
             to_email: sanitizedEmail,
+            user_name: sanitizeHtml(name),
             summary_table: summaryTable,
             pie_chart: textChart,
             session_info: sessionInfo
@@ -420,6 +408,7 @@ async function submitResults() {
 
         await emailjs.send('service_f61mg7v', 'template_hv83ral', {
             to_email: 'direcionar.me@gmail.com',
+            user_name: sanitizeHtml(name),
             summary_table: summaryTable,
             pie_chart: textChart,
             subpillar_html: subPillarHtml,
@@ -452,16 +441,14 @@ function renderPillarChart(metrics) {
     const maxPoints = [
         pillars.AUTOCONSCIÊNCIA.length * 5,
         pillars.AUTOGESTÃO.length * 5,
-        pillars.MOTIVAÇÃO.length * 5,
         pillars.CONSCIÊNCIA_SOCIAL.length * 5,
-        pillars.GESTÃO_DE_RELACIONAMENTOS.length * 5
+        pillars.GESTÃO_DE_RELACIONAMENTO.length * 5
     ];
     const scores = [
         metrics.autoconsciencia,
         metrics.autogestao,
-        metrics.motivacao,
         metrics.conscienciaSocial,
-        metrics.gestaoRelacionamentos
+        metrics.gestaoRelacionamento
     ];
     const percentages = scores.map((score, i) =>
         maxPoints[i] ? Math.round((score / maxPoints[i]) * 100) : 0
@@ -473,15 +460,14 @@ function renderPillarChart(metrics) {
             labels: [
                 'Autoconsciência',
                 'Autogestão',
-                'Motivação',
                 'Consciência Social',
-                'Gestão de Relacionamentos'
+                'Gestão de Relacionamento'
             ],
             datasets: [{
                 label: 'Percentual',
                 data: percentages,
                 backgroundColor: [
-                    '#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'
+                    '#fd7c50', '#f0bca5', '#fae8ac', '#d9d9d9'
                 ],
                 borderWidth: 2,
                 borderColor: '#fff',
@@ -536,25 +522,22 @@ function getTextBasedChart(metrics) {
     const maxPoints = [
         pillars.AUTOCONSCIÊNCIA.length * 5,
         pillars.AUTOGESTÃO.length * 5,
-        pillars.MOTIVAÇÃO.length * 5,
         pillars.CONSCIÊNCIA_SOCIAL.length * 5,
-        pillars.GESTÃO_DE_RELACIONAMENTOS.length * 5
+        pillars.GESTÃO_DE_RELACIONAMENTO.length * 5
     ];
     
     const scores = [
         metrics.autoconsciencia,
         metrics.autogestao,
-        metrics.motivacao,
         metrics.conscienciaSocial,
-        metrics.gestaoRelacionamentos
+        metrics.gestaoRelacionamento
     ];
     
     const labels = [
         'Autoconsciência',
         'Autogestão', 
-        'Motivação',
         'Consciência Social',
-        'Gestão de Relacionamentos'
+        'Gestão de Relacionamento'
     ];
     
     const percentages = scores.map((score, i) =>
@@ -569,7 +552,7 @@ function getTextBasedChart(metrics) {
 
     percentages.forEach((percentage, i) => {
         const barWidth = Math.max(percentage, 5); // Minimum width for visibility
-        const color = ['#FD7C50', '#FDC350', '#50BFFD', '#50FDAA', '#A950FD'][i];
+        const color = ['#FD7C50', '#FDC350', '#50BFFD', '#A950FD'][i];
         
         chart += `
         <div style="margin-bottom: 15px;">
@@ -597,15 +580,14 @@ function renderGroupedSubPillarCharts() {
     const pillarGroups = {
         AUTOCONSCIÊNCIA: [],
         AUTOGESTÃO: [],
-        MOTIVAÇÃO: [],
         CONSCIÊNCIA_SOCIAL: [],
-        GESTÃO_DE_RELACIONAMENTOS: []
+        GESTÃO_DE_RELACIONAMENTO: []
     };
 
     questions.forEach(q => {
-        const competenciaKey = q.competência ? q.competência.trim().toLowerCase() : '';
-        const pilar = competenciaToPilar[competenciaKey];
-        if (pilar && pillarGroups[pilar]) {
+        if (!q.fundamento) return;
+        const pilar = q.fundamento.trim().toUpperCase().replace(/ /g, '_');
+        if (pillarGroups[pilar]) {
             pillarGroups[pilar].push(q);
         }
     });
@@ -614,9 +596,12 @@ function renderGroupedSubPillarCharts() {
         // Calculate subpillar scores for this pillar
         const subScores = {};
         qs.forEach(q => {
-            if (!q.competência) return;
-            if (!subScores[q.competência]) subScores[q.competência] = 0;
-            subScores[q.competência] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
+            let subKey = q.competência;
+            if (pillar === 'CONSCIÊNCIA_SOCIAL' && q.subfundamento) {
+                subKey = `${q.subfundamento} - ${q.competência}`;
+            }
+            if (!subScores[subKey]) subScores[subKey] = 0;
+            subScores[subKey] += answers[q.Item - 1] ? Number(answers[q.Item - 1]) : 0;
         });
 
         // Title
@@ -809,6 +794,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
         });
         
+        /*
         // Disable F12, Ctrl+Shift+I, etc. (basic protection)
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || 
@@ -818,6 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
             }
         });
+        */
     }
 });
 
@@ -852,19 +839,17 @@ function calculateMetrics(answers, pillars) {
     const metrics = {
         autoconsciencia: 0,
         autogestao: 0,
-        motivacao: 0,
         conscienciaSocial: 0,
-        gestaoRelacionamentos: 0,
+        gestaoRelacionamento: 0,
         total: 0
     };
 
-    metrics.autoconsciencia = pillars.AUTOCONSCIÊNCIA.reduce((sum, q, idx) => sum + (answers[q.Item - 1] || 0), 0);
-    metrics.autogestao = pillars.AUTOGESTÃO.reduce((sum, q, idx) => sum + (answers[q.Item - 1] || 0), 0);
-    metrics.motivacao = pillars.MOTIVAÇÃO.reduce((sum, q, idx) => sum + (answers[q.Item - 1] || 0), 0);
-    metrics.conscienciaSocial = pillars.CONSCIÊNCIA_SOCIAL.reduce((sum, q, idx) => sum + (answers[q.Item - 1] || 0), 0);
-    metrics.gestaoRelacionamentos = pillars.GESTÃO_DE_RELACIONAMENTOS.reduce((sum, q, idx) => sum + (answers[q.Item - 1] || 0), 0);
+    metrics.autoconsciencia = pillars.AUTOCONSCIÊNCIA.reduce((sum, q) => sum + (answers[q.Item - 1] || 0), 0);
+    metrics.autogestao = pillars.AUTOGESTÃO.reduce((sum, q) => sum + (answers[q.Item - 1] || 0), 0);
+    metrics.conscienciaSocial = pillars.CONSCIÊNCIA_SOCIAL.reduce((sum, q) => sum + (answers[q.Item - 1] || 0), 0);
+    metrics.gestaoRelacionamento = pillars.GESTÃO_DE_RELACIONAMENTO.reduce((sum, q) => sum + (answers[q.Item - 1] || 0), 0);
 
-    metrics.total = metrics.autoconsciencia + metrics.autogestao + metrics.motivacao + metrics.conscienciaSocial + metrics.gestaoRelacionamentos;
+    metrics.total = metrics.autoconsciencia + metrics.autogestao + metrics.conscienciaSocial + metrics.gestaoRelacionamento;
     return metrics;
 }
 

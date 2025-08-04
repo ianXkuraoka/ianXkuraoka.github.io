@@ -189,6 +189,7 @@ h2 {
     display: flex;
     justify-content:space-between;
     gap: 10px;
+    margin-top: 15px;
     margin-bottom: 15px;
     flex-wrap: wrap;
     flex-direction: row;
@@ -238,7 +239,7 @@ h2 {
     color: #555;
 }
 
-.email-input {
+.email-input{
     width: 100%;
     padding: 12px 16px;
     border: 1px solid #ccc;
@@ -252,8 +253,23 @@ h2 {
     outline: none;
 }
 
+.name-input{
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.name-input:focus {
+    border-color: #111;
+    outline: none;
+}
+
 .nav-buttons {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-top: 40px;
 }
@@ -262,6 +278,7 @@ h2 {
     background: #FD7C50;
     color: white;
     border: none;
+    margin-top: 10px;
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 13px;
@@ -290,6 +307,7 @@ h2 {
 .instructions-list {
     list-style: none;
     padding: 0;
+    font-size: larger;
 }
 
 .instructions-list li {
@@ -322,7 +340,7 @@ h2 {
 
 .pillars-list li {
     margin-bottom: 5px;
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .instruction-btn, .btn-secondary {
@@ -372,17 +390,18 @@ h2 {
         gap: 10px;
     }
 
-    .logo-icon {
-        margin-right: 0;
+    .logo-image {
+    height: 32px;   /* Adjust size as needed */
+    width: auto;
     }
 
     .logo-text {
         text-align: left;
-        font-size: 14px;
+        font-size: 10px;
     }
 
     .logo-subtext {
-        font-size: 8px;
+        font-size: 7px;
         color: #555;
     }
 
