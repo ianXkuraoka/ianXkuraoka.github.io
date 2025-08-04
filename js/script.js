@@ -794,7 +794,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
         });
         
-        /*
+        
         // Disable F12, Ctrl+Shift+I, etc. (basic protection)
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || 
@@ -804,7 +804,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
             }
         });
-        */
+        
     }
 });
 
