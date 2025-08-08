@@ -11,27 +11,18 @@
 </head>
 <body>
     <div class="container">
-        <!-- Tela de Login -->
-        <!--<div id="Login">
-            <h1>placeholder Login</h1>
-        </div>-->
 
-        <!-- Tela de Boas-vindas - Parte 1 -->
+        <!-- LOGO -->
         <div class="logo">
-            <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
+            <img src="images/cerebro-icon.png" alt="Logo" class="logo-image">
             <div class="logo-text-group">
                 <div class="logo-text">DIRECIONAR.ME</div>
                 <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
             </div>
         </div>
+
+        <!-- TELA 1: Boas-vindas -->
         <div class="screen active" id="welcome1">
-            <!--<div class="logo">
-                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
-                <div class="logo-text-group">
-                    <div class="logo-text">DIRECIONAR.ME</div>
-                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
-                </div>
-            </div>-->
             <h1>VOCÊ CONTROLA SUAS EMOÇÕES OU É CONTROLADO POR ELAS?</h1>
             <p class="subtitle">
                 Responder esse teste pode mudar a forma como você se vê!
@@ -39,37 +30,23 @@
             <button class="btn" onclick="showWelcome2()">CONTINUAR</button>
         </div>
 
-        <!-- Tela de Boas-vindas - Parte 2 -->
+        <!-- TELA 2: Boas-vindas (explicação) -->
         <div class="screen" id="welcome2">
-            <!--<div class="logo">
-                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
-                <div class="logo-text-group">
-                    <div class="logo-text">DIRECIONAR.ME</div>
-                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
-                </div>
-            </div>-->
             <div class="description">
                 <h2>Seja bem vindo(a)!</h2>
                 <h2>Este inventário foi desenvolvido por Valéria Vollmer e Thiago Chaves, baseado nos 4 pilares de Inteligência Emocional, segundo a metodologia de Daniel Goleman, sendo eles:</h2>
                 <ul class="pillars-list">
-                    <li><strong> autoconciencia</strong></li>
-                    <li><strong> autogestão</strong></li>
-                    <li><strong> consciencia social </strong></li>
-                    <li><strong> gestão de relacionamentos</strong></li>
+                    <li><strong>autoconsciência</strong></li>
+                    <li><strong>autogestão</strong></li>
+                    <li><strong>consciência social</strong></li>
+                    <li><strong>gestão de relacionamentos</strong></li>
                 </ul>
             </div>
             <button class="btn" onclick="nextScreen()">INICIAR</button>
         </div>
 
-        <!-- Tela de Instruções -->
+        <!-- TELA 3: Instruções -->
         <div class="screen" id="instructions">
-            <!--<div class="logo">
-                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
-                <div class="logo-text-group">
-                    <div class="logo-text">DIRECIONAR.ME</div>
-                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
-                </div>
-            </div>-->
             <div class="instructions-panel">
                 <h3>INSTRUÇÕES</h3>
                 <ul class="instructions-list">
@@ -81,40 +58,18 @@
                 <br>
                 <p>As perguntas são baseadas em uma escala Likert, com 5 opções de resposta:</p>
                 <div class="likert-scale" style="margin-top: 20px;">
-                    <div class="scale-option">
-                        <div class="scale-radio"></div>
-                        <div class="scale-label">discordo<br>totalmente</div>
-                    </div>
-                    <div class="scale-option">
-                        <div class="scale-radio"></div>
-                        <div class="scale-label">discordo<br>parcialmente</div>
-                    </div>
-                    <div class="scale-option">
-                        <div class="scale-radio"></div>
-                        <div class="scale-label">neutro</div>
-                    </div>
-                    <div class="scale-option">
-                        <div class="scale-radio"></div>
-                        <div class="scale-label">concordo<br>parcialmente</div>
-                    </div>
-                    <div class="scale-option">
-                        <div class="scale-radio"></div>
-                        <div class="scale-label">concordo<br>totalmente</div>
-                    </div>
+                    <div class="scale-option"><div class="scale-radio"></div><div class="scale-label">discordo<br>totalmente</div></div>
+                    <div class="scale-option"><div class="scale-radio"></div><div class="scale-label">discordo<br>parcialmente</div></div>
+                    <div class="scale-option"><div class="scale-radio"></div><div class="scale-label">neutro</div></div>
+                    <div class="scale-option"><div class="scale-radio"></div><div class="scale-label">concordo<br>parcialmente</div></div>
+                    <div class="scale-option"><div class="scale-radio"></div><div class="scale-label">concordo<br>totalmente</div></div>
                 </div>
             </div>
             <button class="btn" onclick="nextScreen()">INICIAR</button>
         </div>
 
-        <!-- Telas do Questionário -->
+        <!-- TELA 4: Questionário -->
         <div class="screen" id="questionnaire">
-            <!--<div class="logo">
-                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
-                <div class="logo-text-group">
-                    <div class="logo-text">DIRECIONAR.ME</div>
-                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
-                </div>
-            </div>-->
             <div class="progress-text">
                 <span id="currentStep">1</span> de 12 etapas
             </div>
@@ -129,34 +84,23 @@
             </div>
         </div>
 
-        <!-- Tela de Email -->
+        <!-- TELA 5: Email -->
         <div class="screen" id="email">
-            <!--<div class="logo">
-                <img src="images\unnamed-removebg-preview1.png" alt="Logo" class="logo-image">
-                <div class="logo-text-group">
-                    <div class="logo-text">DIRECIONAR.ME</div>
-                    <div class="logo-subtext">INTELIGÊNCIA EMOCIONAL</div>
-                </div>
-            </div>-->
-            <div class="thank-you-icon"></div>
-            <h2>OBRIGADO POR RESPONDER!</h2>
+            <img src="images/cerebro.png" alt="Logo" class="logo-image" style="display:block; margin:0 auto 16px auto; max-width:160px; align-self: center;">
+            <h2>PARABÉNS PELO SEU INTERESSE EM SE CONHECER MELHOR!</h2>
             <p class="subtitle">Preencha com seu email para receber os resultados</p>
             <input type="text" class="name-input" placeholder="escreva seu nome!" id="nameInput" name="nameInput" maxlength="80" required autocomplete="name" />
             <input type="email" class="email-input" placeholder="seunome@gmail.com" id="emailInput">
             <div class="error-message" id="emailError">Por favor, insira um email válido</div>
-            <button class="btn" onclick="submitResults()">RECEBER RESULTADOS</button>
+            <button class="btn" id="submitBtn" onclick="submitResults()">RECEBER RESULTADOS</button>
         </div>
 
-        <!-- Tela de Agradecimento -->
+        <!-- TELA 6: Agradecimento e Resultados -->
         <div class="screen" id="thanks">
             <h2>Seus resultados foram enviados com sucesso!!</h2>
             <p class="subtitle">Acesse sua caixa de e-mail para entender seu nível de desenvolvimento em cada competência avaliada</p>
-            
-            <!-- Interactive Charts Section -->
             <div class="charts-section" style="margin-top: 30px;">
                 <h3 style="text-align: center; margin-bottom: 20px; color: #333;">Seus Resultados</h3>
-                
-                <!-- Main Pie Chart -->
                 <div class="chart-container" style="position: relative; height: 400px;">
                     <canvas id="resultsChart"></canvas>
                 </div>
@@ -164,6 +108,7 @@
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
