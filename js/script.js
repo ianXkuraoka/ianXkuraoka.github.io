@@ -655,7 +655,6 @@ async function getClientIP() {
     }
 }
 
-/*
 // Initialize Security on Page Load
 document.addEventListener('DOMContentLoaded', function() {
     initializeSession();
@@ -663,6 +662,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
+        /*
         document.addEventListener('keydown', function(e) {
             if (e.key === 'F12' || 
                 (e.ctrlKey && e.shiftKey && e.key === 'I') ||
@@ -671,9 +671,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
             }
         });
+        */
     }
 });
-*/
 
 // =====================
 // SUBMIT & EMAIL LOGIC

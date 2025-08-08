@@ -66,6 +66,12 @@ body {
     width: auto;
 }
 
+.cerebro-image {
+    height: 300px;   /* Adjust size as needed */
+    width: auto;
+    align-self: center;
+    }
+
 .logo-text-group {
     display: flex;
     flex-direction: column;
@@ -393,6 +399,12 @@ h2 {
     .logo-image {
     height: 32px;   /* Adjust size as needed */
     width: auto;
+    }
+
+    .cerebro-image {
+    height: 300px;   /* Adjust size as needed */
+    width: auto;
+    align-self: center;
     }
 
     .logo-text {
